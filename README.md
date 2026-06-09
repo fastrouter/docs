@@ -1,25 +1,3 @@
----
-icon: hand-wave
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: true
-  metadata:
-    visible: true
-  tags:
-    visible: true
-  actions:
-    visible: true
----
-
 # Welcome
 
 Welcome to FastRouter.AI!
@@ -32,7 +10,7 @@ FastRouter.ai is a robust LLM Gateway that acts as a control plane for managing 
 
 An LLM Gateway sits between your application and various large language model (LLM) providers. It handles request routing, observability, cost tracking, error fallback, performance optimization, and credential management—enabling developers to abstract provider differences and optimize usage.
 
-{% embed url="https://youtu.be/1Wb_DW2CHa8" %}
+[Watch the more details about FastRouter](https://youtu.be/1Wb_DW2CHa8)
 
 ### Jump right in
 
