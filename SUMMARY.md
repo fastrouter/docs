@@ -69,5 +69,7 @@
 
 * [IDE Integrations](integrations/ide-integrations.md)
 * [Claude Code](integrations/claude-code.md)
+* [OpenCode](integrations/opencode.md)
 * [OpenClaw](integrations/openclaw.md)
+* [Scalekit](integrations/scalekit.md)
 * [Running Hermes Agent with FastRouter](integrations/running-hermes-agent-with-fastrouter.md)
