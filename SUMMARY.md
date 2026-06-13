@@ -20,6 +20,7 @@
 * [Add External Keys (BYOK)](add-external-keys-byok.md)
 * [Custom Evaluations](custom-evaluations.md)
 * [Video Evaluations](video-evaluations.md)
+* [Prompt Library](prompt-library.md)
 * [Prompt Optimizations](prompt-optimizations.md)
 * [Prompt Caching](prompt-caching.md)
 * [Guardrails](guardrails.md)
