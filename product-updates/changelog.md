@@ -6,6 +6,22 @@ icon: gem
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-06-11" %}
+## Added
+
+Prompt Library — Write, store, version, and optimize prompts in one place and reference them by ID in API calls, so prompt changes ship without a code deploy. Mark any version as **Production** to serve it to all live requests, and roll back instantly by promoting an earlier version. Optimize — Refine a stored prompt with Prompt Optimizations and save the result as a tracked, optimized version, with **Compare** to diff versions before promoting. Variables — Insert `{{curly braces}}` placeholders in a prompt and fill them per request via the `variables` field.
+
+[https://docs.fastrouter.ai/prompt-library](https://docs.fastrouter.ai/prompt-library)<br>
+{% endupdate %}
+
+{% update date="2026-05-28" %}
+## Added
+
+Free Models (`:free`) — Append `:free` to a supported model ID (e.g. `sarvam/sarvam-105b:free`) to route requests at no cost, with the suffix stripped transparently before reaching the provider. Available to all orgs regardless of billing status. Per-model daily quota — 10 requests per org per day, tracked independently per model and reset daily at UTC midnight; paid orgs consume free quota rather than billing credits.
+
+[https://docs.fastrouter.ai/explore-features/free-models-free](https://docs.fastrouter.ai/explore-features/free-models-free)
+{% endupdate %}
+
 {% update date="2026-05-21" %}
 ## Added
 
@@ -110,8 +126,6 @@ icon: gem
 * **Category-Based Routing** — Direct requests to different model groups based on detected prompt category, with per-category sub-strategies and a configurable default fallback
 
 [https://docs.fastrouter.ai/explore-features/virtual-model-aliases](https://docs.fastrouter.ai/explore-features/virtual-model-aliases)
-
-
 {% endupdate %}
 
 {% update date="2026-03-20" %}
@@ -123,4 +137,3 @@ icon: gem
 [https://docs.fastrouter.ai/tracing](https://docs.fastrouter.ai/tracing)
 {% endupdate %}
 {% endupdates %}
-
