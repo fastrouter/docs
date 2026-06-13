@@ -68,8 +68,16 @@
 ## Integrations
 
 * [IDE Integrations](integrations/ide-integrations.md)
+* [Cursor](integrations/cursor.md)
+* [Cline](integrations/cline.md)
 * [Claude Code](integrations/claude-code.md)
+* [Roo Code](integrations/roo-code.md)
 * [OpenCode](integrations/opencode.md)
 * [OpenClaw](integrations/openclaw.md)
 * [Scalekit](integrations/scalekit.md)
 * [Running Hermes Agent with FastRouter](integrations/running-hermes-agent-with-fastrouter.md)
+* [OpenAI Agent SDK](integrations/openai-agent-sdk.md)
+* [LangChain](integrations/langchain.md)
+* [CrewAI](integrations/crewai.md)
+* [Pydantic AI](integrations/pydantic-ai.md)
+* [Agno](integrations/agno.md)
