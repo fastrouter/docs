@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your Cursor AI editor
-icon: code
+icon: square-code
 ---
 
 # Cursor

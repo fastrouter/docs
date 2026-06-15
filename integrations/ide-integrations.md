@@ -2,6 +2,7 @@
 description: >-
   Step-by-step guides to configure Cursor, Cline, and Roo Code with FastRouter's
   OpenAI-compatible API for seamless access to the latest models.
+hidden: true
 icon: code
 ---
 
@@ -15,15 +16,15 @@ To get started, sign up at [https://FastRouter.ai ](https://fastrouter.ai/)and *
 
 ***
 
-While the instructions below focus on  `x-ai/grok-code-fast-1`, FastRouter supports a wide range of models. Check the [FastRouter Model Catalog ](https://fastrouter.ai/models)for options and input modalities (e.g., text, image, file) and follow the same instructions to add any other model of your choice.
+While the instructions below focus on `x-ai/grok-code-fast-1`, FastRouter supports a wide range of models. Check the [FastRouter Model Catalog ](https://fastrouter.ai/models)for options and input modalities (e.g., text, image, file) and follow the same instructions to add any other model of your choice.
 
 ### **Integrating with Cursor**
 
-Cursor is a powerful AI-powered code editor. Follow these steps to configure it with FastRouter and use the latest models like  `x-ai/grok-code-fast-1`.
+Cursor is a powerful AI-powered code editor. Follow these steps to configure it with FastRouter and use the latest models like `x-ai/grok-code-fast-1`.
 
 1. **Obtain Your API Key:** Sign up at [https://FastRouter.ai ](https://fastrouter.ai/)and generate your free API key.
 2. **Configure Settings:** Open Cursor Settings and set the OpenAI Base URL to: `https://go.fastrouter.ai/api/v1`.
-3. **Add the Model:** Click “Add Model” and enter: `x-ai/grok-code-fast-1`.&#x20;
+3. **Add the Model:** Click “Add Model” and enter: `x-ai/grok-code-fast-1`.
 
 <div><figure><img src="../.gitbook/assets/Cursor1.png" alt=""><figcaption></figcaption></figure> <figure><img src="../.gitbook/assets/Cursor2.png" alt=""><figcaption></figcaption></figure></div>
 
@@ -46,7 +47,7 @@ Your setup is complete, and Grok Code Fast 1 is ready for tasks such as code com
 
 ### **Integrating with Roo Code**
 
-Roo Code offers robust coding support. Integrate FastRouter to enable the latest models like  `x-ai/grok-code-fast-1` with these steps.
+Roo Code offers robust coding support. Integrate FastRouter to enable the latest models like `x-ai/grok-code-fast-1` with these steps.
 
 1. **Obtain Your API Key:** Sign up at [https://FastRouter.ai ](https://fastrouter.ai/)to generate your free API key, which includes access to millions of tokens for Grok Code Fast 1 and other models.
 2. **Configure Settings:** In Roo Code settings, choose API Provider: OpenAI Compatible. Set the Base URL to `https://go.fastrouter.ai/api/v1`. Paste in your API key, then enter the Model ID: `x-ai/grok-code-fast-1`.

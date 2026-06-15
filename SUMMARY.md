@@ -69,11 +69,13 @@
 ## Integrations
 
 * [IDE Integrations](integrations/ide-integrations.md)
+* [Claude Code](integrations/claude-code.md)
 * [Cursor](integrations/cursor.md)
 * [Cline](integrations/cline.md)
-* [Claude Code](integrations/claude-code.md)
 * [Roo Code](integrations/roo-code.md)
 * [OpenCode](integrations/opencode.md)
+* [DeepSeek Reasonix CLI](integrations/deepseek-reasonix-cli.md)
+* [Codex CLI](integrations/codex-cli.md)
 * [OpenClaw](integrations/openclaw.md)
 * [Scalekit](integrations/scalekit.md)
 * [Running Hermes Agent with FastRouter](integrations/running-hermes-agent-with-fastrouter.md)

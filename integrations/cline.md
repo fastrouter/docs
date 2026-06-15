@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your Cline coding agent
-icon: brackets-square
+icon: square-code
 ---
 
 # Cline

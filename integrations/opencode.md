@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your OpenCode coding agent
-icon: square-terminal
+icon: square-code
 ---
 
 # OpenCode
