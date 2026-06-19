@@ -57,6 +57,7 @@
 * [Realtime](api-reference/realtime.md)
 * [Moderations](api-reference/moderations.md)
 * [Models](api-reference/models.md)
+* [Providers](api-reference/providers.md)
 * [Auto Router](api-reference/auto-router.md)
 * [Batch Processing](api-reference/batch-processing.md)
 * [Generations](api-reference/generations.md)
