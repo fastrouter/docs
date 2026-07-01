@@ -51,6 +51,7 @@
   * [Image Generation](api-reference/image/image-generation.md)
   * [Image Edit](api-reference/image/image-edit.md)
 * [Audio](api-reference/audio/README.md)
+  * [Text to Speech](api-reference/audio/text-to-speech.md)
   * [Audio to Text](api-reference/audio/audio-to-text.md)
   * [Text to Audio](api-reference/audio/text-to-audio.md)
 * [Video](api-reference/video.md)
