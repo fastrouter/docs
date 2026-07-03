@@ -6,10 +6,44 @@ icon: gem
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-07-01" %}
+## Added
+
+**Model Playground: Image & Video** — Added dedicated Image and Video Playgrounds to experiment with multimodal models directly from the browser. Generate images and videos, compare model outputs, and iterate without writing any code.
+{% endupdate %}
+
+{% update date="2026-06-25" %}
+## Improved
+
+**Prompt Library** — Optimize any saved prompt version directly from Prompt Library. Prompt Optimizations now creates a new version automatically, preserving the original while making it easy to review and promote improvements.
+
+**Prompt Comparison with Samples** — Compare the original and optimized prompt side-by-side using sample inputs before promoting a new version. Quickly validate improvements and understand how prompt changes affect model outputs.
+
+[https://docs.fastrouter.ai/prompt-library](https://docs.fastrouter.ai/prompt-library)
+{% endupdate %}
+
+{% update date="2026-06-18" %}
+## Added
+
+**BytePlus Provider** — Added support for BytePlus-hosted models. FastRouter automatically handles BytePlus' custom pricing flow, including providers that return pricing information asynchronously, ensuring accurate cost tracking and billing.
+
+**New Video & Multimodal Models** — Added support for the latest image, video, and reasoning models, including x-ai/grok-imagine-video, GLM 5.2, Kimi Code 2.7, and Minimax M3.
+
+[https://fastrouter.ai/models?order=newest](https://fastrouter.ai/models?order=newest)<br>
+{% endupdate %}
+
 {% update date="2026-06-11" %}
 ## Added
 
-Prompt Library — Write, store, version, and optimize prompts in one place and reference them by ID in API calls, so prompt changes ship without a code deploy. Mark any version as **Production** to serve it to all live requests, and roll back instantly by promoting an earlier version. Optimize — Refine a stored prompt with Prompt Optimizations and save the result as a tracked, optimized version, with **Compare** to diff versions before promoting. Variables — Insert `{{curly braces}}` placeholders in a prompt and fill them per request via the `variables` field.
+**MCP Server Templates** — Added pre-configured templates for popular MCP servers, eliminating the need to manually enter server configuration values. Connect common tools in just a few clicks while retaining the flexibility to customize settings when needed.
+
+[https://docs.fastrouter.ai/mcp-gateway](https://docs.fastrouter.ai/mcp-gateway)
+{% endupdate %}
+
+{% update date="2026-06-04" %}
+## Added
+
+**Prompt Library** — Write, store, version, and optimize prompts in one place and reference them by ID in API calls, so prompt changes ship without a code deploy. Mark any version as **Production** to serve it to all live requests, and roll back instantly by promoting an earlier version. Optimize — Refine a stored prompt with Prompt Optimizations and save the result as a tracked, optimized version, with **Compare** to diff versions before promoting. Variables — Insert `{{curly braces}}` placeholders in a prompt and fill them per request via the `variables` field.
 
 [https://docs.fastrouter.ai/prompt-library](https://docs.fastrouter.ai/prompt-library)<br>
 {% endupdate %}
@@ -17,7 +51,7 @@ Prompt Library — Write, store, version, and optimize prompts in one place and 
 {% update date="2026-05-28" %}
 ## Added
 
-Free Models (`:free`) — Append `:free` to a supported model ID (e.g. `sarvam/sarvam-105b:free`) to route requests at no cost, with the suffix stripped transparently before reaching the provider. Available to all orgs regardless of billing status. Per-model daily quota — 10 requests per org per day, tracked independently per model and reset daily at UTC midnight; paid orgs consume free quota rather than billing credits.
+**Free Models** (`:free`) — Append `:free` to a supported model ID (e.g. `sarvam/sarvam-105b:free`) to route requests at no cost, with the suffix stripped transparently before reaching the provider. Available to all orgs regardless of billing status. Per-model daily quota — 10 requests per org per day, tracked independently per model and reset daily at UTC midnight; paid orgs consume free quota rather than billing credits.
 
 [https://docs.fastrouter.ai/explore-features/free-models-free](https://docs.fastrouter.ai/explore-features/free-models-free)
 {% endupdate %}
