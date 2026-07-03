@@ -38,6 +38,10 @@ This guide covers configuring the Cline VS Code extension to use FastRouter as a
 
 Open **Cline Settings** in VS Code and configure:
 
+1. **Select:**  Bring my own API key
+
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
 1. **API Provider:** select **OpenAI Compatible**
 2. **Base URL:**
 
@@ -45,7 +49,7 @@ Open **Cline Settings** in VS Code and configure:
 https://api.fastrouter.ai/api/v1
 ```
 
-<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-06-19 at 5.26.33 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. **API Key:** paste your FastRouter API key
 4. **Model ID:** enter a FastRouter model slug, for example:

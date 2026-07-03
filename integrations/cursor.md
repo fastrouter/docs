@@ -42,10 +42,10 @@ Open **Cursor Settings**, go to the **Models** section, and in the OpenAI API ke
 2. Enable **Override OpenAI Base URL** and set it to:
 
 ```
-https://api.fastrouter.ai/api/v1 or https://go.fastrouter.ai/api/v1
+https://api.fastrouter.ai/api/v1
 ```
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 **Step 3: Add a Model**
 

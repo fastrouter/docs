@@ -88,3 +88,8 @@
 * [CrewAI](integrations/crewai.md)
 * [Pydantic AI](integrations/pydantic-ai.md)
 * [Agno](integrations/agno.md)
+* [Langgraph](integrations/langgraph.md)
+* [LlamaIndex](integrations/llamaindex.md)
+* [AutoGen](integrations/autogen.md)
+* [Instructor](integrations/instructor.md)
+* [Aider](integrations/aider.md)
