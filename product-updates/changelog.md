@@ -127,12 +127,13 @@ icon: gem
 {% update date="2026-04-13" %}
 ## Added
 
-**Added**
+**Prompt Optimizations (GEPA-powered)** — Automatically improve system prompts using FastRouter’s Genetic-Pareto optimization engine with iterative reflection, mutation, and scoring
 
-* **Prompt Optimizations (GEPA-powered)** — Automatically improve system prompts using FastRouter’s Genetic-Pareto optimization engine with iterative reflection, mutation, and scoring
-* **Run prompt experiments from your own data** — Import datasets from files or Activity Logs, evaluate against custom metrics, and compare optimized prompts against baseline performance
-* **LLM-as-a-Judge evaluations** — Score prompts across metrics like Accuracy, Helpfulness, Safety, Completeness, or your own custom criteria using a shared evaluator model
-* **Optimization Insights** — Review improvement %, final scores, accepted iterations, and the full optimized prompt in a dedicated results view
+**Run prompt experiments from your own data** — Import datasets from files or Activity Logs, evaluate against custom metrics, and compare optimized prompts against baseline performance
+
+**LLM-as-a-Judge evaluations** — Score prompts across metrics like Accuracy, Helpfulness, Safety, Completeness, or your own custom criteria using a shared evaluator model
+
+**Optimization Insights** — Review improvement %, final scores, accepted iterations, and the full optimized prompt in a dedicated results view
 
 [https://docs.fastrouter.ai/prompt-optimizations](https://docs.fastrouter.ai/prompt-optimizations)
 {% endupdate %}
@@ -140,11 +141,11 @@ icon: gem
 {% update date="2026-04-03" %}
 ## Added
 
-**Added**
+**MCP Gateway** — Register any MCP-compatible server (GitHub, Linear, Gmail, or your own APIs) and expose its tools to any model routed through FastRouter, with centralized credential management, project-level scoping, and selective tool exposure
 
-* **MCP Gateway** — Register any MCP-compatible server (GitHub, Linear, Gmail, or your own APIs) and expose its tools to any model routed through FastRouter, with centralized credential management, project-level scoping, and selective tool exposure
-* **OAuth 2.0 & Static Header authentication for MCP servers** — Securely store and inject credentials server-side across all tool calls, with support for No Auth, Static Header, and full OAuth 2.0 authorization code flow
-* **Auto-execution mode** — Set `auto_execute_tools: true` to let FastRouter handle the complete tool-call loop and return a final text response directly, with a configurable `max_tool_rounds` cap (maximum 5)
+**OAuth 2.0 & Static Header authentication for MCP servers** — Securely store and inject credentials server-side across all tool calls, with support for No Auth, Static Header, and full OAuth 2.0 authorization code flow
+
+**Auto-execution mode** — Set `auto_execute_tools: true` to let FastRouter handle the complete tool-call loop and return a final text response directly, with a configurable `max_tool_rounds` cap (maximum 5)
 
 [https://docs.fastrouter.ai/mcp-gateway](https://docs.fastrouter.ai/mcp-gateway)
 {% endupdate %}
@@ -154,10 +155,9 @@ icon: gem
 {% update date="2026-03-27" %}
 ## Added
 
-**Added**
+**Priority Routing** — Route requests through models in a fixed priority order, with automatic sequential fallback for deterministic, predictable routing
 
-* **Priority Routing** — Route requests through models in a fixed priority order, with automatic sequential fallback for deterministic, predictable routing
-* **Category-Based Routing** — Direct requests to different model groups based on detected prompt category, with per-category sub-strategies and a configurable default fallback
+**Category-Based Routing** — Direct requests to different model groups based on detected prompt category, with per-category sub-strategies and a configurable default fallback
 
 [https://docs.fastrouter.ai/explore-features/virtual-model-aliases](https://docs.fastrouter.ai/explore-features/virtual-model-aliases)
 {% endupdate %}
@@ -165,8 +165,9 @@ icon: gem
 {% update date="2026-03-20" %}
 ## Added
 
-* **Tracing (W3C `traceparent` support)** — Group multiple LLM API calls into a single trace with ordered spans
-* **Traces view in Activity** — Visualize execution timelines, latency, tokens, and cost across spans
+**Tracing (W3C `traceparent` support)** — Group multiple LLM API calls into a single trace with ordered spans
+
+**Traces view in Activity** — Visualize execution timelines, latency, tokens, and cost across spans
 
 [https://docs.fastrouter.ai/tracing](https://docs.fastrouter.ai/tracing)
 {% endupdate %}
