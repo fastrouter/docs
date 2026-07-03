@@ -72,7 +72,6 @@
 
 ## Integrations
 
-* [IDE Integrations](integrations/ide-integrations.md)
 * [Claude Code](integrations/claude-code.md)
 * [Cursor](integrations/cursor.md)
 * [Cline](integrations/cline.md)
