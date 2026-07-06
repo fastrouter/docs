@@ -7,9 +7,7 @@ icon: lightbulb-message
 
 # Reasoning Tokens
 
-## Reasoning Tokens
-
-#### Overview
+## **Overview**
 
 FastRouter can return Reasoning Tokens (also known as _thinking tokens_) for supported models. These tokens represent the model's internal reasoning process and can significantly improve output quality for complex tasks such as planning, math, tool use, and multi-step analysis.
 
@@ -20,9 +18,7 @@ FastRouter can return Reasoning Tokens (also known as _thinking tokens_) for sup
 
 ***
 
-#### Supported Models
-
-**Reasoning Token Support**
+## **Supported Models**
 
 Reasoning tokens are currently supported by:
 
@@ -33,7 +29,7 @@ Reasoning tokens are currently supported by:
 
 ***
 
-#### How Reasoning Tokens Appear in Responses
+## **How Reasoning Tokens Appear in Responses**
 
 When enabled, reasoning tokens appear as structured blocks in the response:
 
@@ -50,7 +46,7 @@ If excluded, the model still reasons internally—but the reasoning is **not ret
 
 ***
 
-#### Controlling Reasoning Tokens
+## **Controlling Reasoning Tokens**
 
 You can control reasoning behavior using the `reasoning` object in your request.
 
@@ -73,7 +69,7 @@ You can control reasoning behavior using the `reasoning` object in your request.
 
 ***
 
-#### Reasoning Effort Levels
+## **Reasoning Effort Levels**
 
 **Supported By**
 
@@ -83,23 +79,30 @@ You can control reasoning behavior using the `reasoning` object in your request.
 
 **Effort Options**
 
-| Effort   | Token Allocation        |
-| -------- | ----------------------- |
-| `high`   | \\\~80% of `max_tokens` |
-| `medium` | \\\~50% of `max_tokens` |
-| `low`    | \\\~20% of `max_tokens` |
+| Effort     | Token Allocation        |
+| ---------- | ----------------------- |
+| `max`      | \~90% of `max_tokens`   |
+| `xhigh`    | \~85% of `max_tokens`   |
+| `high`     | \~80% of `max_tokens`   |
+| `trending` | \~80% of `max_tokens`   |
+| `medium`   | \~50% of `max_tokens`   |
+| `low`      | \~20% of `max_tokens`   |
+| `minimal`  | \~10% of `max_tokens`   |
+| `none`     | 0% — reasoning disabled |
+
+> **Note:** `trending` currently maps to the same allocation as `high`. It is provided as a separate, forward-compatible label and may be tuned independently in the future — don't assume it will always equal `high`.
 
 Example:
 
 ```json
-"reasoning\": {
+"reasoning": {
  "effort": "high"
 }
 ```
 
 ***
 
-#### Reasoning Max Tokens
+## **Reasoning Max Tokens**
 
 **Supported By**
 
@@ -109,14 +112,14 @@ Example:
 Example:
 
 ```json
-\"reasoning\": {
- \"max_tokens\": 2000
+"reasoning": {
+ "max_tokens": 2000
 }
 ```
 
 ***
 
-#### Google Gemini Reasoning Behavior
+## **Google Gemini Reasoning Behavior**
 
 Google Gemini models support reasoning tokens, but the API used depends on the model generation.
 
@@ -127,8 +130,8 @@ Gemini 2.5 thinking models use Google's `thinkingBudget` API. With FastRouter, y
 Example:
 
 ```json
-\"reasoning\": {
- \"max_tokens\": 2000
+"reasoning": {
+ "max_tokens": 2000
 }
 ```
 
@@ -136,14 +139,20 @@ Example:
 
 Gemini 3 models (such as `google/gemini-3.1-pro-preview` and `google/gemini-3-flash-preview`) use Google's newer `thinkingLevel` API instead of the older `thinkingBudget` API used by Gemini 2.5 models.
 
-FastRouter maps the `reasoning.effort` parameter directly to Google's `thinkingLevel` values:
+FastRouter maps the `reasoning.effort` parameter to Google's `thinkingLevel` values as follows:
 
-| FastRouter reasoning.effort | Google thinkingLevel |
-| --------------------------- | -------------------- |
-| `"minimal"`                 | `"minimal"`          |
-| `"low"`                     | `"low"`              |
-| `"medium"`                  | `"medium"`           |
-| `"high"`                    | `"high"`             |
+| FastRouter reasoning.effort | Google thinkingLevel  |
+| --------------------------- | --------------------- |
+| `max`                       | `high`                |
+| `xhigh`                     | `high`                |
+| `high`                      | `high`                |
+| `trending`                  | `high`                |
+| `medium`                    | `medium`              |
+| `low`                       | `low`                 |
+| `minimal`                   | `minimal`             |
+| `none`                      | _(thinking disabled)_ |
+
+> Google's `thinkingLevel` API only exposes four levels (`minimal`, `low`, `medium`, `high`). FastRouter's finer-grained effort levels above `high` (`xhigh`, `max`, `trending`) all map to Google's `high` on Gemini 3 models — the additional granularity only takes effect on models that consume a numeric token budget (Anthropic, Gemini 2.5).
 
 Example:
 
@@ -155,11 +164,11 @@ Example:
 
 **Token Consumption is Determined by Google**
 
-When using `thinkingLevel`, the actual number of reasoning tokens consumed is determined internally by Google. There are no publicly documented token limit breakpoints for each level. For example, setting `effort: \"low\"` might result in several hundred reasoning tokens depending on the complexity of the task. This is expected behavior and reflects how Google implements thinking levels internally.
+When using `thinkingLevel`, the actual number of reasoning tokens consumed is determined internally by Google. There are no publicly documented token limit breakpoints for each level. For example, setting `effort: "low"` might result in several hundred reasoning tokens depending on the complexity of the task. This is expected behavior and reflects how Google implements thinking levels internally.
 
 ***
 
-#### Anthropic-Specific Reasoning Behavior
+## **Anthropic-Specific Reasoning Behavior**
 
 When using **Anthropic models**:
 
@@ -171,7 +180,7 @@ When using **Anthropic models**:
 * `reasoning.effort`
 * Converted into a reasoning token budget
 * Reasoning tokens are:
-* **Minimum:** 1024 tokens
+* **Minimum:** 1024 tokens (except `none`, see below)
 * **Maximum:** 32,000 tokens
 
 **Budget Formula**
@@ -185,17 +194,26 @@ budget_tokens = max(
 
 Where:
 
-* `high` → 0.8
-* `medium` → 0.5
-* `low` → 0.2
+| Effort     | effort\_ratio |
+| ---------- | ------------- |
+| `max`      | 0.9           |
+| `xhigh`    | 0.85          |
+| `high`     | 0.8           |
+| `trending` | 0.8           |
+| `medium`   | 0.5           |
+| `low`      | 0.2           |
+| `minimal`  | 0.1           |
+| `none`     | 0             |
+
+> **`none` is a special case:** an `effort_ratio` of `0` would otherwise still floor to the 1024-token minimum under the formula above. Instead, `effort: "none"` disables reasoning entirely (equivalent to omitting `reasoning` / setting `enabled: false`) — no reasoning budget is allocated and no reasoning tokens are generated or billed.
 
 **Important Constraint**
 
-> **`max_tokens` must be strictly greater than the reasoning budget**, otherwise the model will not have enough tokens to produce a final answer.
+> **`max_tokens` must be strictly greater than the reasoning budget**, otherwise the model will not have enough tokens to produce a final answer. This applies to all effort levels except `none`.
 
 ***
 
-#### Excluding Reasoning Tokens
+## **Excluding Reasoning Tokens**
 
 You can instruct the model to reason internally **without returning reasoning tokens**.
 
@@ -208,10 +226,11 @@ You can instruct the model to reason internally **without returning reasoning to
 * The model still performs reasoning
 * Reasoning tokens are **not included** in the response
 * Works across **all models**
+* Note: this is distinct from `effort: "none"` — `exclude` still allocates and bills a reasoning budget, it just withholds the reasoning text from the response. `effort: "none"` skips reasoning altogether.
 
 ***
 
-#### Token Usage & Billing
+## **Token Usage & Billing**
 
 * Reasoning tokens are counted as **output tokens**
 * They are billed the same way as regular output tokens
