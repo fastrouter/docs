@@ -40,7 +40,7 @@ Currently, supported on Sarvam models in our catalog for a limited time.
 | Sarvam: Saaras V3   | `sarvam/saaras:v3:free`   |
 | Sarvam: Bulbul V2   | `sarvam/bulbul:v2:free`   |
 
-`:free` is enabled on a per-model basis. Check the [model catalog](https://claude.ai/models) — eligible models display a **Free** badge on their detail page.
+`:free` is enabled on a per-model basis. Check the [model catalog](https://fastrouter.ai/models?order=newest) — eligible models display a **Free** badge on their detail page.
 
 ***
 
