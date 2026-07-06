@@ -7,7 +7,7 @@ icon: lightbulb-message
 
 # Reasoning Tokens
 
-## **Overview**
+### **Overview**
 
 FastRouter can return Reasoning Tokens (also known as _thinking tokens_) for supported models. These tokens represent the model's internal reasoning process and can significantly improve output quality for complex tasks such as planning, math, tool use, and multi-step analysis.
 
@@ -18,7 +18,7 @@ FastRouter can return Reasoning Tokens (also known as _thinking tokens_) for sup
 
 ***
 
-## **Supported Models**
+### **Supported Models**
 
 Reasoning tokens are currently supported by:
 
@@ -29,7 +29,7 @@ Reasoning tokens are currently supported by:
 
 ***
 
-## **How Reasoning Tokens Appear in Responses**
+### **How Reasoning Tokens Appear in Responses**
 
 When enabled, reasoning tokens appear as structured blocks in the response:
 
@@ -46,7 +46,7 @@ If excluded, the model still reasons internally—but the reasoning is **not ret
 
 ***
 
-## **Controlling Reasoning Tokens**
+### **Controlling Reasoning Tokens**
 
 You can control reasoning behavior using the `reasoning` object in your request.
 
@@ -69,7 +69,7 @@ You can control reasoning behavior using the `reasoning` object in your request.
 
 ***
 
-## **Reasoning Effort Levels**
+### **Reasoning Effort Levels**
 
 **Supported By**
 
@@ -102,7 +102,7 @@ Example:
 
 ***
 
-## **Reasoning Max Tokens**
+### **Reasoning Max Tokens**
 
 **Supported By**
 
@@ -119,7 +119,7 @@ Example:
 
 ***
 
-## **Google Gemini Reasoning Behavior**
+### **Google Gemini Reasoning Behavior**
 
 Google Gemini models support reasoning tokens, but the API used depends on the model generation.
 
@@ -168,7 +168,7 @@ When using `thinkingLevel`, the actual number of reasoning tokens consumed is de
 
 ***
 
-## **Anthropic-Specific Reasoning Behavior**
+### **Anthropic-Specific Reasoning Behavior**
 
 When using **Anthropic models**:
 
@@ -181,13 +181,13 @@ When using **Anthropic models**:
 * Converted into a reasoning token budget
 * Reasoning tokens are:
 * **Minimum:** 1024 tokens (except `none`, see below)
-* **Maximum:** 32,000 tokens
+* **Maximum:** 24,576 tokens
 
 **Budget Formula**
 
 ```
 budget_tokens = max(
- min(max_tokens × effort_ratio, 32000),
+ min(max_tokens × effort_ratio, 24576),
  1024
 )
 ```
@@ -211,9 +211,18 @@ Where:
 
 > **`max_tokens` must be strictly greater than the reasoning budget**, otherwise the model will not have enough tokens to produce a final answer. This applies to all effort levels except `none`.
 
+**Adaptive Thinking (Newer Anthropic Models)**
+
+Newer Anthropic models support **adaptive thinking**, where the model dynamically decides how much of its reasoning budget to actually use for a given request, rather than always consuming the full `budget_tokens` allocated.
+
+* FastRouter still computes and sends `budget_tokens` (via the formula above) to the provider as an upper bound.
+* The model adaptively spends anywhere from a small fraction of that budget up to the full amount, depending on task complexity — a simple prompt at `effort: "max"` may consume far fewer reasoning tokens than the 90%-of-`max_tokens` ceiling suggests.
+* Billing reflects **actual reasoning tokens generated**, not the requested budget — the budget is a ceiling, not a guarantee of spend.
+* This means observed reasoning-token usage on adaptive models will typically be lower, and more variable, than the static budget formula alone would imply.
+
 ***
 
-## **Excluding Reasoning Tokens**
+### **Excluding Reasoning Tokens**
 
 You can instruct the model to reason internally **without returning reasoning tokens**.
 
@@ -226,12 +235,13 @@ You can instruct the model to reason internally **without returning reasoning to
 * The model still performs reasoning
 * Reasoning tokens are **not included** in the response
 * Works across **all models**
-* Note: this is distinct from `effort: "none"` — `exclude` still allocates and bills a reasoning budget, it just withholds the reasoning text from the response. `effort: "none"` skips reasoning altogether.
+* Note: this is distinct from `effort: "none"` — `exclude` still allocates and bills a reasoning budget (subject to adaptive thinking behavior on supported models), it just withholds the reasoning text from the response. `effort: "none"` skips reasoning altogether.
 
 ***
 
-## **Token Usage & Billing**
+### **Token Usage & Billing**
 
 * Reasoning tokens are counted as **output tokens**
 * They are billed the same way as regular output tokens
 * Enabling reasoning increases token usage but often improves: Accuracy, Coherence, Tool-calling correctness
+* On adaptive-thinking Anthropic models, billed reasoning tokens reflect actual usage, which may be well below the computed budget ceiling
