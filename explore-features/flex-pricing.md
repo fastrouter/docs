@@ -29,7 +29,7 @@ Example using **GPT-5.4 Nano** via the OpenAI provider:
 
 **↓ \~50% savings on tokens**
 
-> Actual savings vary by model. Check the [model catalog](https://chat.fastrouter.ai/compare-playground/chat/dee2b9cb-660f-4ceb-a879-8d968b8a88c1) for per-model Flex pricing across all supported providers.
+> Actual savings vary by model. Check the [model catalog](https://fastrouter.ai/models?order=newest) for per-model Flex pricing across all supported providers.
 
 ### Supported Providers
 
@@ -44,7 +44,7 @@ Flex pricing is currently available on the following providers:
 
 1. **Identify a Flex-supported model** Check the model catalog for the **Flex** tab in Provider Details. If the tab is present, Flex pricing is available for that model.
 2. **Append `:flex` to the model ID** Change your model field from `openai/gpt-5.4-nano` to `openai/gpt-5.4-nano:flex` or from `google/gemini-3.1-pro-preview` to `google/gemini-3.1-pro-preview:flex` That's the only change required.
-3. **Optionally pin the provider** Use `"provider": {"only": ["openai"]}`  or `"provider": {"only": ["googleaistudio"]}` or `"provider": {"only": ["googlevertexai"]}` to ensure the request goes to the correct provider for the Flex tier and isn't rerouted.
+3. **Optionally pin the provider** Use `"provider": {"only": ["openai"]}` or `"provider": {"only": ["googleaistudio"]}` or `"provider": {"only": ["googlevertexai"]}` to ensure the request goes to the correct provider for the Flex tier and isn't rerouted.
 
 ### Code Examples
 
