@@ -97,7 +97,7 @@ print(response)
 python llamaindex_example.py
 ```
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 The response prints to your terminal, and the request appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with token usage and cost.
 

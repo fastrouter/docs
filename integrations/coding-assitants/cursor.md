@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your Cursor AI editor
-icon: square-code
+icon: cursor
 ---
 
 # Cursor
@@ -45,7 +45,7 @@ Open **Cursor Settings**, go to the **Models** section, and in the OpenAI API ke
 https://api.fastrouter.ai/api/v1
 ```
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 **Step 3: Add a Model**
 
@@ -55,7 +55,7 @@ Click **Add Model** and enter a FastRouter model slug, for example:
 x-ai/grok-code-fast-1
 ```
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 **Step 4: Start Coding**
 

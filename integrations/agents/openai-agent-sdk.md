@@ -2,7 +2,7 @@
 description: >-
   Track usage, control costs, and add guardrails to your OpenAI Agents SDK
   applications
-icon: robot
+icon: openai
 ---
 
 # OpenAI Agent SDK

@@ -112,7 +112,7 @@ python pydantic_ai_example.py
 
 The agent returns a validated, typed `CityInfo` object:
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 The request appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with full token and cost details.
 

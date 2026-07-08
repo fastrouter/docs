@@ -118,7 +118,7 @@ python crew_example.py
 
 CrewAI prints the agent's progress (because `verbose=True`) followed by the final answer:
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Every LLM call from every agent appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with token usage and cost.
 

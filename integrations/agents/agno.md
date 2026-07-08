@@ -99,7 +99,7 @@ python agno_example.py
 
 Agno prints a formatted response panel in your terminal:
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 The request appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with token usage and cost.
 
