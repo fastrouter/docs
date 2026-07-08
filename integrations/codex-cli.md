@@ -1,6 +1,6 @@
 ---
 description: Integrating Codex CLI with FastRouter.
-icon: openai
+icon: square-code
 ---
 
 # Codex CLI

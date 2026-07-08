@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your OpenCode coding agent
-icon: rectangle-tall
+icon: square-code
 ---
 
 # OpenCode
@@ -42,31 +42,31 @@ Download [OpenCode](https://opencode.ai/download) and install it on your system.
 
 Launch the OpenCode desktop app and open **Settings**.
 
-<img src="../../.gitbook/assets/unknown (45).png" alt="" height="212" width="624">
+<img src="../.gitbook/assets/unknown (45).png" alt="" height="212" width="624">
 
 #### Step 4: Go to Providers
 
 In the Settings sidebar, select **Providers**.
 
-<img src="../../.gitbook/assets/unknown (46).png" alt="" height="252" width="624">
+<img src="../.gitbook/assets/unknown (46).png" alt="" height="252" width="624">
 
 #### Step 5: Show More Providers
 
 Click **Show more Providers** to expand the full provider list.
 
-<img src="../../.gitbook/assets/unknown (47).png" alt="" height="185" width="624">
+<img src="../.gitbook/assets/unknown (47).png" alt="" height="185" width="624">
 
 #### Step 6: Select FastRouter
 
 Search for or scroll to **FastRouter** in the provider list and select it.
 
-<img src="../../.gitbook/assets/unknown (48).png" alt="" height="141" width="624">
+<img src="../.gitbook/assets/unknown (48).png" alt="" height="141" width="624">
 
 #### Step 7: Add Your API Key
 
 Paste the FastRouter API key from Step 2 and save. You should see a **Successfully added** confirmation.
 
-<img src="../../.gitbook/assets/unknown (49).png" alt="" height="337" width="624">
+<img src="../.gitbook/assets/unknown (49).png" alt="" height="337" width="624">
 
 #### Step 8: Enable FastRouter Models
 
@@ -74,14 +74,14 @@ To access FastRouter's full model catalog inside OpenCode:
 
 1. Click the **model name** below the prompt box
 
-<img src="../../.gitbook/assets/unknown (50).png" alt="" height="193" width="624">
+<img src="../.gitbook/assets/unknown (50).png" alt="" height="193" width="624">
 
 2.  Click **Manage Models**<br>
 
-    <img src="../../.gitbook/assets/Manage Models (4)" alt="Manage Models" height="311" width="624">
+    <img src="../.gitbook/assets/Manage Models (4)" alt="Manage Models" height="311" width="624">
 3.  Toggle on the FastRouter models you want to use<br>
 
-    <img src="../../.gitbook/assets/unknown (51).png" alt="" height="397" width="624">
+    <img src="../.gitbook/assets/unknown (51).png" alt="" height="397" width="624">
 
 &#x20; All enabled models are now available from the model picker. Requests route through FastRouter, and you can monitor usage in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/).
 
@@ -115,21 +115,21 @@ Inside OpenCode, run the `/connect` command and select **FastRouter** from the p
 /connect
 ```
 
-<img src="../../.gitbook/assets/unknown (52).png" alt="" height="87" width="624">
+<img src="../.gitbook/assets/unknown (52).png" alt="" height="87" width="624">
 
 1.  Select **FastRouter**<br>
 
-    <img src="../../.gitbook/assets/unknown (54).png" alt="" height="245" width="624">
+    <img src="../.gitbook/assets/unknown (54).png" alt="" height="245" width="624">
 
 
 2.  Paste the API key from Step 2
 
-    <img src="../../.gitbook/assets/unknown (55).png" alt="" height="263" width="624">
+    <img src="../.gitbook/assets/unknown (55).png" alt="" height="263" width="624">
 
 
 3.  Pick a model and start prompting<br>
 
-    <img src="../../.gitbook/assets/unknown (56).png" alt="" height="573" width="624">
+    <img src="../.gitbook/assets/unknown (56).png" alt="" height="573" width="624">
 
 #### Step 4 (Alternative): Configure via `opencode.json`
 

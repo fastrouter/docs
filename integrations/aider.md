@@ -86,7 +86,7 @@ With `.env` in place, just run `aider --model openai/x-ai/grok-code-fast-1`—no
 
 > **Security:** If you use a `.env` file, make sure it is git-ignored (the command above does this). Aider auto-ignores `.aider*` but **not** `.env`.
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

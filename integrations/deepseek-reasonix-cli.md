@@ -1,6 +1,6 @@
 ---
 description: Integrating DeepSeek Reasonix CLI with FastRouter.
-icon: deepseek
+icon: square-code
 ---
 
 # DeepSeek Reasonix CLI

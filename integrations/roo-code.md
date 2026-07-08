@@ -38,7 +38,7 @@ This guide covers configuring the Roo Code VS Code extension to use FastRouter a
 
 Open **Roo Code Settings** in VS Code and configure:
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 1. **API Provider:** select **OpenAI Compatible**
 2. **Base URL:**
@@ -47,7 +47,7 @@ Open **Roo Code Settings** in VS Code and configure:
 https://api.fastrouter.ai/api/v1
 ```
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 3. **API Key:** paste your FastRouter API key
 4. **Model ID:** enter a FastRouter model slug, for example:

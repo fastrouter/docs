@@ -103,7 +103,7 @@ print(result["messages"][-1].content)
 python graph_example.py
 ```
 
-<figure><img src="../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 The agent calls the `get_weather` tool and responds with the weather. Every request, token count, and cost appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/).
 

@@ -1,6 +1,6 @@
 ---
 description: Track usage, control costs, and add guardrails to your Cline coding agent
-icon: robot
+icon: square-code
 ---
 
 # Cline
@@ -40,7 +40,7 @@ Open **Cline Settings** in VS Code and configure:
 
 1. **Select:**  Bring my own API key
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 1. **API Provider:** select **OpenAI Compatible**
 2. **Base URL:**
@@ -49,7 +49,7 @@ Open **Cline Settings** in VS Code and configure:
 https://api.fastrouter.ai/api/v1
 ```
 
-<figure><img src="../../.gitbook/assets/Screenshot 2026-06-19 at 5.26.33 PM.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-06-19 at 5.26.33 PM.png" alt=""><figcaption></figcaption></figure>
 
 3. **API Key:** paste your FastRouter API key
 4. **Model ID:** enter a FastRouter model slug, for example:
@@ -62,7 +62,7 @@ x-ai/grok-code-fast-1
 
 Give Cline a task. All requests now route through FastRouter, and every request, token count, and cost appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/).
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

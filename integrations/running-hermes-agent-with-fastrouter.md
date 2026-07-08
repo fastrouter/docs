@@ -35,7 +35,7 @@ In the below commands, replace <mark style="color:green;">$API\_KEY</mark> with 
 curl -fsSL https://fastrouter.ai/hermes/install-fastrouter.sh | sh -s -- $API_KEY
 ```
 
-Or download, inspect, then run&#x20;
+Or download, inspect, then run
 
 ```bash
 curl -fsSL https://fastrouter.ai/hermes/install-fastrouter.sh -o install-fastrouter.sh
@@ -75,7 +75,7 @@ Drive the FastRouter setup from a Hermes chat session. Install the skill once, t
 
 ***
 
-### 1. Install the Skill ( one time)&#x20;
+### 1. Install the Skill ( one time)
 
 Run this once in the terminal to register the FastRouter skill with Hermes:
 
@@ -85,11 +85,11 @@ hermes skills install https://fastrouter.ai/hermes/skill.md
 
 ***
 
-While installing, when prompted to pick a category of the skill , enter `gateway` or `router`  or any other custom category that you want to put this skill into.&#x20;
+While installing, when prompted to pick a category of the skill , enter `gateway` or `router` or any other custom category that you want to put this skill into.
 
 ### 2. Ask Hermes to Install FastRouter
 
-In a terminal, start a Hermes chat session by typing&#x20;
+In a terminal, start a Hermes chat session by typing
 
 `hermes`
 
@@ -101,7 +101,7 @@ install fastrouter with key $API_KEY
 
 The agent will load the skill, register FastRouter under `providers.fastrouter`, and confirm the setup. You can also ask it to list available models, group them by provider, or recommend one for your use case.
 
-> #### <mark style="color:orange;">**Heads up — secret redaction. Hermes has an optional setting (**</mark><mark style="color:orange;">**`security.redact_secrets`**</mark><mark style="color:orange;">**) that masks API keys before the model sees them. It's off by default, so most users can ignore this. If you have it enabled, your key might be stripped before reaching the model and the skill won't be able to write it to config.**</mark>&#x20;
+> #### <mark style="color:orange;">**Heads up — secret redaction. Hermes has an optional setting (**</mark><mark style="color:orange;">**`security.redact_secrets`**</mark><mark style="color:orange;">**) that masks API keys before the model sees them. It's off by default, so most users can ignore this. If you have it enabled, your key might be stripped before reaching the model and the skill won't be able to write it to config.**</mark>
 
 ***
 
@@ -128,7 +128,7 @@ Select `fastrouter` or `custom:fastrouter` from the provider list, then choose t
 * **Skill not triggering?** Type `/reload-skills` in the Hermes session, or restart the CLI.
 * **Config changes not taking effect?** Custom providers load on session start. Run `/reset` in chat or relaunch `hermes`.
 * **Script reports "hermes not found"?** Install Hermes first: [hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com/docs).
-* **Getting invalid key error ?** check if the api key was redacted by hermes. &#x20;
+* **Getting invalid key error ?** check if the api key was redacted by hermes.
 
 ***
 
@@ -343,4 +343,3 @@ Before reporting success, confirm:
 ````
 
 _Need help?_ [_FastRouter docs_](https://docs.fastrouter.ai) _·_ [_Hermes docs_](https://hermes-agent.nousresearch.com/docs)
-
