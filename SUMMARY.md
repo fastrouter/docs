@@ -35,7 +35,7 @@
 * [Reasoning Tokens](reasoning-tokens.md)
 * [Response Caching](response-caching.md)
 * [Custom Alerts](alerts.md)
-* [System Alerts](alerts-1.md)
+* [System Alerts](system-alerts.md)
 * [Tracing](tracing.md)
 * [MCP Gateway](mcp-gateway.md)
 * [Web Search](web-search.md)
