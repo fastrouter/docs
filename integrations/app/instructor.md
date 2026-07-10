@@ -110,7 +110,7 @@ print(result)
 python instructor_example.py
 ```
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15) (1).png" alt=""><figcaption></figcaption></figure>
 
 You get back a validated `CityInfo` object. The request appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with token usage and cost.
 

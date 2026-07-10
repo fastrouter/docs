@@ -142,7 +142,7 @@ if __name__ == "__main__":
 python autogen_example.py
 ```
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 The agent responds, and the request appears in your [FastRouter Dashboard](https://dashboard.fastrouter.ai/) with token usage and cost.
 

@@ -98,7 +98,7 @@ python langchain_example.py
 ```
 {% endcode %}
 
-<figure><img src="../.gitbook/assets/image (1).png" alt="The request appears immediately in your FastRouter Dashboard, with token usage and cost attribution."><figcaption><p>The request appears immediately in your <a href="https://dashboard.fastrouter.ai/">FastRouter Dashboard</a>, with token usage and cost attribution.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="The request appears immediately in your FastRouter Dashboard, with token usage and cost attribution."><figcaption><p>The request appears immediately in your <a href="https://dashboard.fastrouter.ai/">FastRouter Dashboard</a>, with token usage and cost attribution.</p></figcaption></figure>
 
 ***
 
