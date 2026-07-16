@@ -22,6 +22,7 @@
 * [Video Evaluations](video-evaluations.md)
 * [Prompt Library](prompt-library.md)
 * [Prompt Optimizations](prompt-optimizations.md)
+* [Prompt Compression](prompt-compression.md)
 * [Prompt Caching](prompt-caching.md)
 * [Guardrails](guardrails.md)
 * [Batch Processing](batch-processing.md)
