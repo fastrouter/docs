@@ -7,7 +7,7 @@
 * [Dashboard](explore-features/quickstart.md)
 * [Automatic Model Selection](explore-features/automatic-model-selection.md)
 * [Virtual Model Aliases](explore-features/virtual-model-aliases.md)
-* [Blend — Multi-Model Deliberation](explore-features/blend-multi-model-deliberation.md)
+* [FastRouter Blend: Multi-Model Deliberation](explore-features/fastrouter-blend-multi-model-deliberation.md)
 * [Fallback Models](explore-features/fallback-models.md)
 * [Free Models (:free)](explore-features/free-models-free.md)
 * [Flex Pricing](explore-features/flex-pricing.md)
