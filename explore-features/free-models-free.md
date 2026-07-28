@@ -133,7 +133,7 @@ To continue without waiting for the reset, remove the `:free` suffix to route as
 
 ### Activity Log
 
-All `:free` requests appear in your [Activity Log](https://claude.ai/dashboard/activity) tagged with a **Free** tier indicator. Cost is recorded as `$0.00`. Usage analytics include free-tier traffic separately so it does not skew your paid consumption metrics.
+All `:free` requests appear in your Activity Log tagged with a **Free** tier indicator. Cost is recorded as `$0.00`. Usage analytics include free-tier traffic separately so it does not skew your paid consumption metrics.
 
 ***
 
