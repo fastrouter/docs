@@ -36,6 +36,7 @@
 * [Function Calling](function-calling.md)
 * [Reasoning Tokens](reasoning-tokens.md)
 * [Response Caching](response-caching.md)
+* [Realtime API (WebSocket)](realtime-api-websocket.md)
 * [Custom Alerts](alerts.md)
 * [System Alerts](system-alerts.md)
 * [Tracing](tracing.md)
