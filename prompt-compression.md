@@ -276,13 +276,13 @@ Each example below is a full request body. Long message content is shortened to 
 
 ### Quick recipes
 
-**Lossless (safe default)**
+#### **Lossless (safe default)**
 
 ```bash
 { "optimize": { "compress": { "engine": "headroom" } } }
 ```
 
-**Gentle ML compression, user messages only**
+#### **Gentle ML compression, user messages only**
 
 ```bash
 {
@@ -296,19 +296,19 @@ Each example below is a full request body. Long message content is shortened to 
 }
 ```
 
-**Explicit engine list (order still headroom → llmlingua → caveman)**
+#### **Explicit engine list (order still headroom → llmlingua → caveman)**
 
 ```bash
 { "optimize": { "compress": { "engine": ["headroom", "llmlingua"] } } }
 ```
 
-**Audit only — measure savings, change nothing**
+#### **Audit only — measure savings, change nothing**
 
 ```bash
 { "optimize": { "compress": { "engine": "all", "mode": "audit" } } }
 ```
 
-**Full request (OpenAI format)**
+#### **Full request (OpenAI format)**
 
 ```bash
 curl -L https://api.fastrouter.ai/v1/chat/completions \
