@@ -21,6 +21,7 @@
 * [Add External Keys (BYOK)](add-external-keys-byok.md)
 * [Custom Evaluations](custom-evaluations.md)
 * [Video Evaluations](video-evaluations.md)
+* [Insights](insights.md)
 * [Prompt Library](prompt-library.md)
 * [Prompt Optimizations](prompt-optimizations.md)
 * [Prompt Compression](prompt-compression.md)
