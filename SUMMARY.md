@@ -49,6 +49,7 @@
 * [Chat Completions](api-reference/chat-completions.md)
 * [Responses](api-reference/responses.md)
 * [Anthropic Messages Format](api-reference/anthropic-messages-format.md)
+* [Gemini Interactions API Format](api-reference/gemini-interactions-api-format.md)
 * [Gemini Native Format](api-reference/gemini-native-format.md)
 * [Embeddings](api-reference/embeddings.md)
 * [Image](api-reference/image/README.md)
