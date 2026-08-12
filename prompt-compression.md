@@ -8,7 +8,7 @@ icon: compress
 
 # Prompt Compression
 
-#### Overview
+### Overview
 
 Opt-in compression for chat requests. Add one block to your request body and FastRouter compresses your messages before they reach the provider — cutting input tokens without changing the response.
 
@@ -16,7 +16,7 @@ Opt-in compression for chat requests. Add one block to your request body and Fas
 * **Opt-in per request** — one block in the body
 * **Fail-open** — if compression can't run, your original messages are sent unchanged
 
-#### How it works
+### How it works
 
 ```
 Client ──► FastRouter gateway ──► compression ──► Provider (OpenAI / Anthropic / …)
@@ -28,7 +28,7 @@ You send a normal chat request plus a small `optimize` block. The gateway compre
 
 Compression runs only when your request opts in — the body includes an `optimize.compress` block. Without it, the request flows through completely unchanged.
 
-#### Choosing an engine
+### Choosing an engine
 
 Pick based on your content, not the implementation:
 
@@ -60,7 +60,7 @@ Pick based on your content, not the implementation:
 
 The `compress` object is an open key/value bag — any engine parameter is forwarded as-is. Omit the block entirely and no compression happens.
 
-#### Supported routes
+### Supported routes
 
 | Surface                 | Endpoints                                                                              | Coverage                             |
 | ----------------------- | -------------------------------------------------------------------------------------- | ------------------------------------ |
@@ -69,7 +69,7 @@ The `compress` object is an open key/value bag — any engine parameter is forwa
 
 Native Responses / Gemini handlers are not covered yet.
 
-#### Parameters
+### Parameters
 
 **General**
 
