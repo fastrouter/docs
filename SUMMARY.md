@@ -9,7 +9,7 @@
 * [Virtual Model Aliases](explore-features/virtual-model-aliases.md)
 * [FastRouter Blend: Multi-Model Deliberation](explore-features/fastrouter-blend-multi-model-deliberation.md)
 * [Fallback Models](explore-features/fallback-models.md)
-* [Free Model Router (:free)](explore-features/free-models-free.md)
+* [Free Model Router (:free)](explore-features/free-model-router.md)
 * [Flex Pricing](explore-features/flex-pricing.md)
 * [Provider Routing Strategies](explore-features/provider-routing-strategies.md)
 * [Organization & Members](explore-features/organization-and-members.md)
