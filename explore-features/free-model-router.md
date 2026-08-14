@@ -1,7 +1,8 @@
 ---
 description: >-
   FastRouter exposes select models at no charge via the :free slug — up to 10
-  requests per org per day, with no payment required.
+  requests per org per day, with no payment required for organizations having
+  paid credit balance >$1.
 icon: square-0
 ---
 
@@ -9,56 +10,69 @@ icon: square-0
 
 ### Introduction
 
-FastRouter provides free access to a rotating set of models for all orgs, regardless of billing status. Free access is provided at FastRouter's discretion; availability of any model can be paused or removed at any time.
+Free model access is provided at FastRouter's discretion. The available models, quotas, and eligibility requirements may change periodically, and access to any model may be paused or removed at any time.
 
-You can access free models in two ways:
+> **Important:** Your organization must have a **positive credit balance** to use free models. Free models cannot be used when your organization's paid credit balance is < **$1**. Free requests themselves do not consume your credits.
+
+You can use free models in two ways:
 
 1. **Use a specific free model** by appending `:free` to its model ID.
-2. **Use `fastrouter/free`** to let FastRouter automatically select and rotate between available free models.
+2. **Use `fastrouter/free`** to let FastRouter automatically select an eligible free model for each request.
 
 ***
 
-### How It Works
+#### How It Works
 
-**Option 1: Use a specific free model**
+**Option 1: Use a Specific Free Model**
 
-Append `:free` to any supported model ID:
+Append `:free` to a supported model ID:
 
-```shellscript
+```bash
 openai/gpt-oss-120b:free
 ```
 
-FastRouter strips the suffix, checks whether `:free` is enabled for that model, verifies your org's daily quota, then routes the request normally. The `:free` suffix is invisible to the downstream provider.
+FastRouter recognizes the `:free` suffix, verifies that free access is enabled for the model and that your organization meets the free-model eligibility requirements, then routes the request normally.
 
-If a model does not have `:free` enabled, the request is rejected. The standard model ID (without the suffix) is unaffected.
+The `:free` suffix is handled entirely by FastRouter and is not passed to the downstream provider.
+
+If `:free` is not enabled for a model, the request is rejected. The standard model ID without the `:free` suffix continues to work normally.
 
 **Option 2: Use `fastrouter/free`**
 
-You can use `fastrouter/free` as the model ID to have FastRouter automatically select a free model for each request:
+Use `fastrouter/free` as the model ID to have FastRouter automatically select a free model:
 
-```shellscript
+```bash
 fastrouter/free
 ```
 
-The **FastRouter Free Model Router** automatically rotates between available free models. For each request, FastRouter selects a free model at random from the currently available pool, while intelligently filtering the pool based on the capabilities required by your request.
+The **FastRouter Free Model Router** automatically selects a free model from the currently available pool for each request.
 
-This allows you to use a single model ID without having to maintain a list of individual free models as availability changes.
+FastRouter filters the available models based on the capabilities required by your request. For example, requests requiring **image understanding**, **tool calling**, or **structured outputs** are routed only to compatible free models.
 
-> **Note:** The 10-request daily quota applies to each underlying free model. Requests made through `fastrouter/free` consume the quota of the free model selected for that request.
+This lets you use a single model ID without maintaining a list of individual free models as availability changes.
 
-***
-
-### Supported Models
-
-`:free` is currently available on the following models:
-
-<table data-search="false"><thead><tr><th>Model</th><th>Free Model ID</th></tr></thead><tbody><tr><td>OpenAI: GPT-OSS 120B</td><td><code>openai/gpt-oss-120b:free</code></td></tr><tr><td>OpenAI: GPT-OSS 20B</td><td><code>openai/gpt-oss-20b:free</code></td></tr><tr><td>Google: Gemma 4 26B</td><td><code>google/gemma4-26b:free</code></td></tr><tr><td>NVIDIA: Nemotron 3 Nano 30B</td><td><code>nvidia/nemotron-3-nano-30b:free</code></td></tr><tr><td>NVIDIA: Nemotron 3 Super 120B</td><td><code>nvidia/nemotron-3-super:free</code></td></tr><tr><td>Sarvam: Sarvam 105B</td><td><code>sarvam/sarvam-105b:free</code></td></tr></tbody></table>
-
-`:free` is enabled on a per-model basis. Check the [model catalog](https://fastrouter.ai/models?order=newest) — eligible models display a **Free** badge on their detail page.
+> **Note:** Requests made through `fastrouter/free` consume the free quota of the underlying model selected for that request.
 
 ***
 
-### Usage
+#### Supported Models
+
+The following models currently support `:free`:
+
+| Model                         | Free Model ID                     |
+| ----------------------------- | --------------------------------- |
+| OpenAI: GPT-OSS 120B          | `openai/gpt-oss-120b:free`        |
+| OpenAI: GPT-OSS 20B           | `openai/gpt-oss-20b:free`         |
+| Google: Gemma 4 26B           | `google/gemma4-26b:free`          |
+| NVIDIA: Nemotron 3 Nano 30B   | `nvidia/nemotron-3-nano-30b:free` |
+| NVIDIA: Nemotron 3 Super 120B | `nvidia/nemotron-3-super:free`    |
+| Sarvam: Sarvam 105B           | `sarvam/sarvam-105b:free`         |
+
+`:free` is enabled on a per-model basis. Check the [model catalog](https://fastrouter.ai/models?order=newest) for the current list of eligible models. Models available for free access display a **Free** badge on their detail page.
+
+***
+
+#### Usage
 
 **Using `fastrouter/free`**
 
@@ -71,7 +85,10 @@ curl 'https://api.fastrouter.ai/api/v1/chat/completions' \
   --data '{
     "model": "fastrouter/free",
     "messages": [
-      { "role": "user", "content": "Explain backpressure in streaming systems." }
+      {
+        "role": "user",
+        "content": "Explain backpressure in streaming systems."
+      }
     ]
   }'
 ```
@@ -89,40 +106,47 @@ client = OpenAI(
 response = client.chat.completions.create(
     model="fastrouter/free",
     messages=[
-        {"role": "user", "content": "Explain backpressure in streaming systems."}
+        {
+            "role": "user",
+            "content": "Explain backpressure in streaming systems."
+        }
     ],
 )
 
 print(response.choices[0].message.content)
 ```
 
-**Using a specific free model**
+**Using a Specific Free Model**
 
-You can also target a specific free model directly:
+To use a specific free model instead of the router:
 
-```shellscript
+```
 openai/gpt-oss-120b:free
 ```
 
-This bypasses the free model router and sends the request to the specified free model.
+This sends the request specifically to the selected free model and does not use the `fastrouter/free` router.
 
 ***
 
-### Quota & Limits
+#### Quota & Limits
 
-<table data-search="false"><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Requests per org per day</td><td>10 per free model. <strong>This limit may vary or change periodically.</strong></td></tr><tr><td>Scope</td><td>Per underlying model — quota tracked independently for each model</td></tr><tr><td>Reset</td><td>Daily at UTC midnight</td></tr><tr><td>Carry-over</td><td>None — unused requests do not roll over</td></tr><tr><td>Paid org behaviour</td><td>Consumes free quota, not billing credits</td></tr><tr><td><code>fastrouter/free</code></td><td>Automatically selects from currently available free models</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Credit balance requirement</td><td>Organization must have a positive credit balance</td></tr><tr><td>Free requests</td><td>10 per organization per free model per day</td></tr><tr><td>Quota scope</td><td>Tracked independently for each underlying model</td></tr><tr><td>Quota reset</td><td>Daily at UTC midnight</td></tr><tr><td>Carry-over</td><td>None — unused requests do not roll over</td></tr><tr><td>Request cost</td><td>$0.00</td></tr><tr><td>Credit consumption</td><td>Free requests do not consume billing credits</td></tr><tr><td><code>fastrouter/free</code></td><td>Automatically selects from currently available free models</td></tr></tbody></table>
 
-> **Example:** If your org uses `fastrouter/free`, each request is routed to one of the currently available free models. If 10 requests have already been made to a particular underlying model, that model is excluded from further free routing for the remainder of the day. This limit may vary or change periodically.
+> **Note:** The free request limit may vary or change periodically.
+
+> **Important:** A positive credit balance is required even though free requests do not consume credits. An organization with < **$1 paid credit balance cannot use free models**.
+
+For example, if your organization has $5 in credits, you can make free requests without reducing that $5 balance. If the balance reaches < $1, free-model requests are blocked until additional credits are added.
 
 ***
 
 #### Error Responses
 
-**`:free` not enabled on this model — `400`**
+**`:free` Not Enabled — `400`**
 
-Returned when `:free` is used on a model that does not have the slug enabled.
+Returned when `:free` is used with a model that does not have free access enabled.
 
-```bash
+```json
 {
   "error": {
     "code": "free_slug_not_enabled",
@@ -132,11 +156,11 @@ Returned when `:free` is used on a model that does not have the slug enabled.
 }
 ```
 
-**Daily quota exhausted — `429`**
+**Daily Free Quota Exhausted — `429`**
 
-Returned when your org has exhausted the free quota for a model. The response includes a `Retry-After` header pointing to the next UTC midnight reset.
+Returned when your organization has exhausted the free quota for the selected underlying model.
 
-```bash
+```json
 {
   "error": {
     "code": "free_quota_exceeded",
@@ -149,51 +173,94 @@ Returned when your org has exhausted the free quota for a model. The response in
 }
 ```
 
-When using a specific `:free` model, remove the `:free` suffix to continue as a standard paid request.
+When using a specific `:free` model, you can remove the `:free` suffix to continue using the model as a standard paid request.
 
-When using `fastrouter/free`, FastRouter automatically excludes models whose free quota has been exhausted and selects from the remaining eligible free models.
+When using `fastrouter/free`, FastRouter excludes models whose free quota has been exhausted and selects from the remaining eligible models.
+
+**No Credit Balance — `402`**
+
+Returned when your organization's paid credit balance is < $1.
+
+```json
+{
+  "error": {
+    "code": "insufficient_credits",
+    "message": "Your organisation must have a positive credit balance to use free models.",
+    "type": "billing_error"
+  }
+}
+```
+
+Add credits to your organization to continue using free models.
 
 ***
 
 #### Activity Log
 
-All `:free` requests appear in your Activity Log tagged with a **Free** tier indicator. Cost is recorded as `$0.00`. Usage analytics include free-tier traffic separately so it does not skew your paid consumption metrics.
+Free-model requests appear in your Activity Log with a **Free** tier indicator.
 
-Requests made through `fastrouter/free` also show the underlying model selected for the request.
+The cost of free requests is recorded as **$0.00**. Free-tier traffic is tracked separately in usage analytics and does not contribute to paid consumption metrics.
+
+For requests made through `fastrouter/free`, the Activity Log also shows the underlying model selected for the request.
 
 ***
 
 #### FAQ
 
-**What is `fastrouter/free`?**\
-`fastrouter/free` is FastRouter's free model router. It automatically selects and rotates between currently available free models, so you can use a single model ID instead of specifying an individual free model.
+**What is `fastrouter/free`?**
 
-**How does `fastrouter/free` choose a model?**\
-FastRouter randomly selects from the currently available free models after filtering for the capabilities required by your request, such as image understanding, tool calling, and structured outputs.
+`fastrouter/free` is FastRouter's free model router. It automatically selects an eligible free model for each request, allowing you to use a single model ID instead of specifying an individual free model.
 
-**Can I choose a specific free model?**\
-Yes. Append `:free` to an eligible model ID, such as `openai/gpt-oss-120b:free`.
+**How does `fastrouter/free` choose a model?**
 
-**Is the 10-request limit shared across all free models, or per model?**\
-The limit is **per model**. Your org gets up to 10 free requests per eligible model per day. `fastrouter/free` distributes requests across the available free models. **Note: This limit may vary or change periodically.**
+FastRouter filters the available free models based on the capabilities required by your request and randomly selects from the compatible models. This can include requirements such as image understanding, tool calling, and structured outputs.
 
-**What happens when a free model's quota is exhausted?**\
-That model is excluded from `fastrouter/free` routing until the daily quota resets. Other eligible free models remain available.
+**Can I choose a specific free model?**
 
-**What happens if no free models are available?**\
-If all eligible free models are unavailable or your org has exhausted the free quota across the available pool, `fastrouter/free` cannot route the request and returns an appropriate error.
+Yes. Append `:free` to an eligible model ID, such as:
 
-**Does `fastrouter/free` support all API parameters?**\
-Yes — requests are filtered based on the capabilities required by the request. Parameters such as structured outputs, tool use, streaming, and multimodal inputs are routed only to compatible free models.
+```shellscript
+openai/gpt-oss-120b:free
+```
 
-**Can I combine `:free` with `:flex`?**\
+**Do I need credits to use free models?**
+
+Yes. Your organization must have a **positive credit balance**. Free models cannot be used when your organization's paid credit balance is < $1.
+
+**Do free requests consume my billing credits?**
+
+No. Free requests are charged **$0.00** and do not consume your billing credits. However, a positive credit balance > $1 is required to access the free-model service.
+
+**Is the free request limit shared across all models?**
+
+No. The quota is tracked **per underlying free model**. For example, if the limit is 10 requests per model per day, your organization can use up to 10 requests on each eligible free model, subject to the current limits.
+
+> **Note:** Free-model quotas may vary or change periodically.
+
+**What happens when a free model's quota is exhausted?**
+
+That model is excluded from `fastrouter/free` routing until its quota resets. Other eligible free models can continue to be selected.
+
+**What happens if my organization's paid credit balance reaches below $1?**
+
+Free-model access is blocked. Add credits to your organization to continue using `:free` models or `fastrouter/free`.
+
+**What happens if no free models are available?**
+
+If no eligible free model can satisfy your request, or all available free models have exhausted their quotas, `fastrouter/free` cannot route the request and returns an appropriate error.
+
+**Does `fastrouter/free` support all API parameters?**
+
+FastRouter filters models based on the capabilities required by your request. Parameters such as structured outputs, tool use, streaming, and multimodal inputs are routed only to compatible free models.
+
+**Can I combine `:free` with `:flex`?**
+
 No. `:free` and `:flex` are mutually exclusive suffixes.
 
-**Do free requests consume my billing credits?**\
-No. Requests made using `:free` or `fastrouter/free` consume the free quota and are not charged against your billing credits.
+**Can paid organizations use free models?**
 
-**Can paid orgs use free models?**\
-Yes. Paid and unpaid orgs can use eligible free models. Free requests remain subject to the applicable daily quota.
+Yes. Both paid and unpaid organizations can use eligible free models, provided the organization has a positive credit balance.
 
-**Where can I find currently available free models?**\
+**Where can I find the currently available free models?**
+
 Check the [model catalog](https://fastrouter.ai/models?order=newest). Models currently eligible for free access display a **Free** badge.
