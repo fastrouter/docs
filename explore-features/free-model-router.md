@@ -12,7 +12,7 @@ icon: square-0
 
 Free model access is provided at FastRouter's discretion. The available models, quotas, and eligibility requirements may change periodically, and access to any model may be paused or removed at any time.
 
-> **Important:** Your organization must have a **positive credit balance** to use free models. Free models cannot be used when your organization's paid credit balance is < **$1**. Free requests themselves do not consume your credits.
+> **Important:** Your organization must have a **positive credit balance** to use free models. Free models cannot be used when your organization's paid credit balance is <= **$1**. Free requests themselves do not consume your credits.
 
 You can use free models in two ways:
 
@@ -134,9 +134,9 @@ This sends the request specifically to the selected free model and does not use 
 
 > **Note:** The free request limit may vary or change periodically.
 
-> **Important:** A positive credit balance is required even though free requests do not consume credits. An organization with < **$1 paid credit balance cannot use free models**.
+> **Important:** A positive credit balance is required even though free requests do not consume credits. An organization with <= **$1 paid credit balance cannot use free models**.
 
-For example, if your organization has $5 in credits, you can make free requests without reducing that $5 balance. If the balance reaches < $1, free-model requests are blocked until additional credits are added.
+For example, if your organization has $5 in paid credits, you can make free requests without reducing that $5 balance. If the balance reaches <= $1, free-model requests are blocked until additional credits are added.
 
 ***
 
@@ -179,7 +179,7 @@ When using `fastrouter/free`, FastRouter excludes models whose free quota has be
 
 **No Credit Balance — `402`**
 
-Returned when your organization's paid credit balance is < $1.
+Returned when your organization's paid credit balance is <= $1.
 
 ```json
 {
@@ -225,7 +225,7 @@ openai/gpt-oss-120b:free
 
 **Do I need credits to use free models?**
 
-Yes. Your organization must have a **positive credit balance**. Free models cannot be used when your organization's paid credit balance is < $1.
+Yes. Your organization must have a **positive credit balance**. Free models cannot be used when your organization's paid credit balance is <= $1.
 
 **Do free requests consume my billing credits?**
 
