@@ -6,7 +6,7 @@ description: >-
 icon: siren-on
 ---
 
-# Alerts
+# Custom Alerts
 
 ### Overview
 
@@ -17,9 +17,9 @@ Alerts evaluate your selected metrics at regular intervals and notify you when c
 
 Alerts are scoped to specific Projects, API Keys, and Models, giving you granular control over what you monitor.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-04-02 at 5.35.54 PM.png" alt=""><figcaption><p>Select metric, name and scope</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-04-02 at 5.35.54 PM.png" alt=""><figcaption><p>Select metric, name and scope</p></figcaption></figure>
 
-<figure><img src=".gitbook/assets/Screenshot 2026-04-02 at 5.35.44 PM.png" alt=""><figcaption><p>Set threshold and subscribe to alert</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-04-02 at 5.35.44 PM.png" alt=""><figcaption><p>Set threshold and subscribe to alert</p></figcaption></figure>
 
 ***
 

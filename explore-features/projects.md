@@ -19,7 +19,7 @@ You can manage the following aspects under **Projects** in FastRouter.ai:
 
 ### 1. Basic Settings
 
-<figure><img src=".gitbook/assets/Basic Settings.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Basic Settings.png" alt=""><figcaption></figcaption></figure>
 
 Configure fundamental parameters for your project, such as rate limits, budget controls, and accessible models.
 
@@ -37,7 +37,7 @@ Click **Save** once your configurations are complete.
 
 ### 2. Members
 
-<figure><img src=".gitbook/assets/Members.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Members.png" alt=""><figcaption></figcaption></figure>
 
 The **Members** tab lets you manage who can access your project and assign specific roles:
 
@@ -62,7 +62,7 @@ Organization Owners are automatically **Project Admins** for all projects. Addit
 
 ### 3. Keys
 
-<figure><img src=".gitbook/assets/Project Keys.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Project Keys.png" alt=""><figcaption></figcaption></figure>
 
 API keys in FastRouter.ai allow secure access to model endpoints within a project.
 
@@ -76,4 +76,3 @@ API keys in FastRouter.ai allow secure access to model endpoints within a projec
 
 * When a project is made **inactive**, all user keys associated with that project will be **disabled**.
 * When a project member is **removed**, any user keys they have created for the project will also be **disabled**.
-

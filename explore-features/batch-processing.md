@@ -74,7 +74,7 @@ This JSONL file uses OpenAI models for embeddings:
 
 To initiate a batch:
 
-<figure><img src=".gitbook/assets/Create Batch.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Create Batch.png" alt=""><figcaption></figcaption></figure>
 
 1. **Prepare Your File:** Create a JSONL file following the format above. You can download sample templates from the FastRouter dashboard.
 2. **Access the Dashboard:** Log in to your FastRouter account and navigate to the Batch Processing section.
@@ -88,7 +88,7 @@ To initiate a batch:
 
 ### **Monitoring and Retrieving Results**
 
-<figure><img src=".gitbook/assets/output.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/output.png" alt=""><figcaption></figcaption></figure>
 
 * **Batch Status:** View your batches in the dashboard under "Batch Jobs." Statuses include In Progress, Completed, or Failed. A progress bar shows completion percentage.
 * **Download Results:** Once completed (typically within hours, up to 24 hours), download the output file. The results file is in JSONL format, with each line corresponding to a request by custom\_id, including the response data or any errors.
@@ -98,6 +98,6 @@ To initiate a batch:
 
 ### **Pricing and Limits**
 
-* **Cost:** Batch requests are billed based on the batch pricing for the underlying model (e.g., tokens for chat completions, inputs for embeddings).&#x20;
+* **Cost:** Batch requests are billed based on the batch pricing for the underlying model (e.g., tokens for chat completions, inputs for embeddings).
 * **Limits:** Batches can contain up to 50,000 requests. Processing time scales with batch size.
 * **Best Practices:** Start with small batches to test. Ensure your API key has sufficient credits.

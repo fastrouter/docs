@@ -41,7 +41,7 @@ Fires when a project's remaining budget drops below a percentage of its configur
 **Reset condition:** Remaining budget exceeds threshold + 2% absolute buffer\
 **Check frequency:** Every 5 minutes
 
-<figure><img src=".gitbook/assets/Configure System Alert Thresholds.png" alt=""><figcaption><p>Configure Thresholds</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Configure System Alert Thresholds.png" alt=""><figcaption><p>Configure Thresholds</p></figcaption></figure>
 
 ***
 
@@ -94,7 +94,7 @@ To manage channels:
 1. Go to **Alerts** in the left navigation.
 2. In the **System Alert Configuration** banner, click **Manage Channels**.
 
-<figure><img src=".gitbook/assets/Manage System Alert Channels Including Webhook 2.png" alt=""><figcaption><p>Manage Channels</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Manage System Alert Channels Including Webhook 2.png" alt=""><figcaption><p>Manage Channels</p></figcaption></figure>
 
 #### Available channels
 
@@ -144,7 +144,7 @@ To connect: **Manage Channels → Flock → Configure**
 
 System alert fire events appear in the **Recent Alerts** tab on the Alerts page, alongside user-configured alert events. System alert rows are marked with a **System** badge.
 
-<figure><img src=".gitbook/assets/Recent Alerts showing System Alerts.png" alt=""><figcaption><p>Recent System Alerts</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Recent Alerts showing System Alerts.png" alt=""><figcaption><p>Recent System Alerts</p></figcaption></figure>
 
 Each row shows:
 

@@ -60,7 +60,7 @@ Selecting **Preview** opens a side panel with the complete reasoning behind a re
 7. **Evidence** — the underlying request and token volumes, broken down by provider.
 8. **How to apply** — the specific change to make.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-08-12 at 6.10.21 PM.png" alt=""><figcaption><p>The Insights page ranks every recommendation by projected weekly savings, with the scope — project, key, and model — shown on each card.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-12 at 6.10.21 PM.png" alt=""><figcaption><p>The Insights page ranks every recommendation by projected weekly savings, with the scope — project, key, and model — shown on each card.</p></figcaption></figure>
 
 ***
 
@@ -99,7 +99,7 @@ PER SAMPLED REQUEST  →  WEEKLY IMPACT
 
 **What you'll see:** An **Evaluation summary** with the use case, current model, best alternative, quality change (as a before → after pair), estimated cost savings, and an **Eval ID** linking to the full evaluation run so you can inspect the replayed outputs yourself.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-08-12 at 6.10.57 PM.png" alt=""><figcaption><p>Model switch recommendations link out to the evaluation run that produced the quality delta, so you can read the replayed outputs yourself.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-12 at 6.10.57 PM.png" alt=""><figcaption><p>Model switch recommendations link out to the evaluation run that produced the quality delta, so you can read the replayed outputs yourself.</p></figcaption></figure>
 
 **Trade-offs:** The quality delta comes from an automated LLM judge on a sample, not from your own rubric or your users. Treat a positive delta as a strong signal to run your own evaluation, not as a finished verdict — open the linked eval and read the outputs before switching a production key.
 
@@ -123,7 +123,7 @@ saving  = actual − cached
 
 **What you'll see:** Number of repeated prefixes, requests on those prefixes, current cost, modelled cost with caching, potential saving, and the resulting cost reduction as a percentage.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-08-12 at 6.13.41 PM.png" alt=""><figcaption><p>A caching recommendation breaks out the modelled cost line by line, so you can see exactly which prefix volume the saving comes from.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-12 at 6.13.41 PM.png" alt=""><figcaption><p>A caching recommendation breaks out the modelled cost line by line, so you can see exactly which prefix volume the saving comes from.</p></figcaption></figure>
 
 **Trade-offs:** Caching is generally safe — the model, the prompt, and the output are unchanged. Savings depend heavily on how tightly your repeated requests cluster in time, since cache entries expire; a prefix repeated 20,000 times but spread thinly across a week will save less than the same volume concentrated into bursts.
 
@@ -142,7 +142,7 @@ STANDARD COST − FLEX COST = WEEKLY IMPACT
 
 **What you'll see:** A `same model, same output` marker, the standard-vs-Flex cost breakdown, a plain-language summary of the reduction, and an **Evidence** table listing the upstream provider, request count, and input/output token volumes the projection was built from.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-08-12 at 6.11.20 PM.png" alt=""><figcaption><p>Flex recommendations carry a <code>same model, same output</code> marker alongside an explicit warning about slower processing and queuing.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-12 at 6.11.20 PM.png" alt=""><figcaption><p>Flex recommendations carry a <code>same model, same output</code> marker alongside an explicit warning about slower processing and queuing.</p></figcaption></figure>
 
 **Trade-offs:** Flex runs the _same model_ and produces the _same quality of output_, but with slower processing and occasional queuing. Skip this one for any key that serves user-facing, latency-sensitive traffic — it's best suited to batch jobs, background enrichment, evals, and offline pipelines.
 
@@ -167,7 +167,7 @@ The **Settings** control on the Insights page lets you configure how recommendat
 
 This is where you enable **Model Switch** recommendations. They are off by default because generating them consumes billable inference — sampled requests are replayed against candidate models and judged. Caching and Flex Tier recommendations run on your existing usage data and are always on.
 
-<figure><img src=".gitbook/assets/Screenshot 2026-08-12 at 6.28.17 PM.png" alt=""><figcaption><p>Enable Model Switch recommendations from Settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-12 at 6.28.17 PM.png" alt=""><figcaption><p>Enable Model Switch recommendations from Settings</p></figcaption></figure>
 
 ***
 

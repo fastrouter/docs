@@ -55,7 +55,7 @@ Navigate to **Setup → External Keys** and click **New Integration**. The wizar
 
 Choose from the list above. Use the search box to filter by name.
 
-<figure><img src=".gitbook/assets/Select Provider.png" alt=""><figcaption><p>Select a provider</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Select Provider.png" alt=""><figcaption><p>Select a provider</p></figcaption></figure>
 
 #### Step 2 — Integration details
 
@@ -70,7 +70,7 @@ Enter configurations and credentials.
 
 > The **Provider Slug** appears in your Activity Log on every request, making it easy to trace which credential was used.
 
-<figure><img src=".gitbook/assets/Configure Provider.png" alt=""><figcaption><p>Add provider key &#x26; configuration</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Configure Provider.png" alt=""><figcaption><p>Add provider key &#x26; configuration</p></figcaption></figure>
 
 **Credential fields** vary by provider. For most, you supply an API key. Three providers support multiple authentication modes:
 
@@ -96,12 +96,10 @@ Enter configurations and credentials.
 > **FastRouter catalog models only.** Only models in the FastRouter Model Catalog are routable, even with auto-enable on. Contact support to request a model addition.
 
 * Toggle catalog models on or off individually, or use All / None.
-* For now, models from the catalog or custom models have to mapped per provider.&#x20;
+* For now, models from the catalog or custom models have to mapped per provider.
 * \[COMING SOON: **Auto-enable** — new catalog models from this provider are enabled on this integration automatically.]
 
-<figure><img src=".gitbook/assets/Enable Models.png" alt=""><figcaption><p>Enable/disable specific provider models</p></figcaption></figure>
-
-
+<figure><img src="../.gitbook/assets/Enable Models.png" alt=""><figcaption><p>Enable/disable specific provider models</p></figcaption></figure>
 
 **Adding custom models**
 
@@ -115,7 +113,7 @@ Use **Add Custom Model** to register fine-tuned or privately hosted models.
 | Input / Output pricing   | No       | USD per 1M tokens, for cost tracking in the dashboard.                                                                                            |
 | Additional token pricing | No       | JSON for provider-specific token categories, e.g. `{"cache_read_input_tokens": 0.30}`                                                             |
 
-<figure><img src=".gitbook/assets/Add Custom Model.png" alt=""><figcaption><p>Configure custom models &#x26; endpoints</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Add Custom Model.png" alt=""><figcaption><p>Configure custom models &#x26; endpoints</p></figcaption></figure>
 
 **Note:** Custom models can be edited or deleted at any time from the model list.
 
@@ -142,4 +140,3 @@ Once active, reference an integration via its **Provider Slug** in:
 * **Virtual Models** — associate an alias with a specific integration
 * **Gateway Configs** — use in fallback or load-balancing configurations
 * **Activity Log** — every request shows the Provider Slug of the integration used
-

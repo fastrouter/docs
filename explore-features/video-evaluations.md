@@ -28,19 +28,19 @@ Video Evals work within the same Custom Evaluations infrastructure as text and i
 
 Navigate to the **Evaluations** section in your FastRouter dashboard and click **Create Evaluation**.
 
-<figure><img src=".gitbook/assets/Evaluation Dashboard.png" alt=""><figcaption><p>Custom Evaluations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Evaluation Dashboard.png" alt=""><figcaption><p>Custom Evaluations</p></figcaption></figure>
 
 **Step 1 — Name Your Evaluation**
 
 Provide a descriptive name (e.g., `Video Compliance Evaluation` or `Product-Video-Quality-Check-v2`).
 
-<figure><img src=".gitbook/assets/New Evaluation.png" alt=""><figcaption><p>Name Your Evaluation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/New Evaluation.png" alt=""><figcaption><p>Name Your Evaluation</p></figcaption></figure>
 
 **Step 2 — Import Video Logs**
 
 Click **Import Data**. In the Import Test Data dialog, select the **Videos** tab.
 
-<figure><img src=".gitbook/assets/Import Test Data - Video.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Import Test Data - Video.png" alt=""><figcaption></figcaption></figure>
 
 Configure the following fields:
 
@@ -80,7 +80,7 @@ Choose an API key from your account. This key will be used for all LLM judge cal
 
 Click **Run** to start the evaluation. FastRouter will apply your judge asynchronously to each video in the dataset and return scored results.
 
-<figure><img src=".gitbook/assets/Import Preview.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Import Preview.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -91,14 +91,17 @@ Access results from the **Evaluations** listing page by clicking your evaluation
 * **Data view**: See each video row with its generation input, a video preview thumbnail, Auto Grader score, latency, and cost.
 *
 
-    <figure><img src=".gitbook/assets/Content Preview.png" alt=""><figcaption><p>Content Preview</p></figcaption></figure>
+```
+<figure><img src=".gitbook/assets/Content Preview.png" alt=""><figcaption><p>Content Preview</p></figcaption></figure>
+```
+
 * **Report view**: Aggregated metrics across all rows — average score, pass rate, latency distribution, and cost.
 
-<figure><img src=".gitbook/assets/Run Details.png" alt=""><figcaption><p>Report Details</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Run Details.png" alt=""><figcaption><p>Report Details</p></figcaption></figure>
 
 * **Judge Reasoning**: Click any individual row score to expand the full LLM judge reasoning — broken down by evaluation dimension (e.g., safety check → minor issues → improvement suggestions).
 
-<figure><img src=".gitbook/assets/Judge Feedback.png" alt=""><figcaption><p>Judge Feedback</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Judge Feedback.png" alt=""><figcaption><p>Judge Feedback</p></figcaption></figure>
 
 **Example output for a tiger image-to-video eval (google/veo3.1-lite):**
 

@@ -10,7 +10,7 @@ The MCP (Model Context Protocol) Gateway lets you register external tool servers
 
 Rather than managing tool authentication and invocation logic in every client, you configure it once in FastRouter. The gateway handles credential injection, tool discovery, and auto-execution on behalf of your models.
 
-FastRouter supports the **Streamable HTTP** transport defined in the MCP 2025-03-26 specification, as well as **SSE-based servers**.&#x20;
+FastRouter supports the **Streamable HTTP** transport defined in the MCP 2025-03-26 specification, as well as **SSE-based servers**.
 
 #### Key Capabilities
 
@@ -31,7 +31,7 @@ Add a new server from the **MCP Servers** page by clicking **Create Server**. Th
 
 Define the connection details and which projects should have access to this server.
 
-<figure><img src=".gitbook/assets/Project Selection.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Project Selection.png" alt=""><figcaption></figcaption></figure>
 
 | Field         | Required | Description                                                                                              |
 | ------------- | -------- | -------------------------------------------------------------------------------------------------------- |
@@ -52,13 +52,13 @@ Choose how FastRouter authenticates with the MCP server on each request. Three m
 
 No credentials are sent. Suitable for public or internally-trusted servers. Tools run without any credential injection.
 
-<figure><img src=".gitbook/assets/No Auth.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/No Auth.png" alt=""><figcaption></figcaption></figure>
 
 2. **Static Header**
 
 A fixed API key or bearer token injected into each outbound request header. FastRouter stores the value encrypted at rest.
 
-<figure><img src=".gitbook/assets/Static header.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Static header.png" alt=""><figcaption></figcaption></figure>
 
 | Field  | Required | Description                                                                               |
 | ------ | -------- | ----------------------------------------------------------------------------------------- |
@@ -69,7 +69,7 @@ A fixed API key or bearer token injected into each outbound request header. Fast
 
 Full OAuth 2.0 authorization code flow with scoped permissions and token refresh. FastRouter acts as the OAuth client. A callback URL is provided — register it with your OAuth provider before proceeding.
 
-<figure><img src=".gitbook/assets/Oauth.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Oauth.png" alt=""><figcaption></figcaption></figure>
 
 | Field             | Required | Description                                                                                |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------ |
@@ -85,9 +85,9 @@ After filling in OAuth fields, click **Connect Now** to complete the authorizati
 
 #### Step 3 — Tool Selection
 
-FastRouter connects to the server and enumerates its available tools.&#x20;
+FastRouter connects to the server and enumerates its available tools.
 
-<figure><img src=".gitbook/assets/Select Tools.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Select Tools.png" alt=""><figcaption></figcaption></figure>
 
 Select which tools to expose to models.
 
@@ -100,9 +100,9 @@ Select which tools to expose to models.
 
 #### Step 4 — Review and Create
 
-Confirm all settings before creating the server.&#x20;
+Confirm all settings before creating the server.
 
-<figure><img src=".gitbook/assets/Review.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Review.png" alt=""><figcaption></figcaption></figure>
 
 The review screen shows:
 

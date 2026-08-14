@@ -12,13 +12,13 @@ icon: arrow-up-right-dots
 
 **What is GEPA?** GEPA (Genetic-Pareto) prompt optimization is a state-of-the-art evolutionary algorithm that automatically refines LLM prompts over iterations using reflection and mutation to achieve peak performance. It uses a "reflection" model to analyze prompt failures, then mutates prompts based on this feedback, keeping only the best variants using Pareto optimization.
 
-FastRouter's Prompt Optimization based on GEPA has three views.&#x20;
+FastRouter's Prompt Optimization based on GEPA has three views.
 
 ### 1. List View
 
 The default landing page for the feature. Shows all optimization runs across your organization.
 
-<figure><img src=".gitbook/assets/prompt-optimization-list.png" alt=""><figcaption><p>Prompt Optimization List</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/prompt-optimization-list.png" alt=""><figcaption><p>Prompt Optimization List</p></figcaption></figure>
 
 > Prompt Optimization — List View The list view shows all optimization runs with their model, improvement %, and status (Completed / In Progress).
 
@@ -37,7 +37,7 @@ The default landing page for the feature. Shows all optimization runs across you
 
 A two-panel page. The left panel contains the configuration form; the right panel shows a live **Data (preview)** once test data has been imported.
 
-<figure><img src=".gitbook/assets/new-optimization.png.png" alt=""><figcaption><p>Create New Optimization</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/new-optimization.png.png" alt=""><figcaption><p>Create New Optimization</p></figcaption></figure>
 
 > New Optimization — Create Form The create view before any configuration. Right panel shows "No Test Data Provided." until a dataset is imported.
 
@@ -53,7 +53,7 @@ Click **+ Add Prompt & Dataset** to open the Setup Optimization Context modal. P
 
 **3 — Optimizer Configurations**
 
-Click **+ Configure Optimization** to set the target model, reflection model, budget tier, and batch size.&#x20;
+Click **+ Configure Optimization** to set the target model, reflection model, budget tier, and batch size.
 
 **4 — Evaluation Metrics**
 
@@ -77,7 +77,7 @@ Clicking **Run** opens the Credit Utilization Estimate modal to confirm cost bef
 
 Once a dataset is imported, the right panel becomes a live preview labelled **Data (preview)** with a total row count.
 
-<figure><img src=".gitbook/assets/data-preview.png.png" alt=""><figcaption><p>Input Data &#x26; Preview</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/data-preview.png.png" alt=""><figcaption><p>Input Data &#x26; Preview</p></figcaption></figure>
 
 > Create View with Data Preview. After importing data, the right panel shows Input / Output / Feedback columns. Feedback rows flagged as Bad are highlighted in red.
 
@@ -95,7 +95,7 @@ Opened by clicking **+ Add Prompt & Dataset**. Two-step wizard with a progress t
 
 **Tab 1 - Base Prompt**
 
-<figure><img src=".gitbook/assets/base-prompt.png.png" alt=""><figcaption><p>Base Prompt</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/base-prompt.png.png" alt=""><figcaption><p>Base Prompt</p></figcaption></figure>
 
 > Setup Optimization Context — Base Prompt Tab Enter the system prompt to be optimized. GEPA will evolve this prompt across iterations. The info note reminds you that only matching logs will be imported.
 
@@ -112,7 +112,7 @@ Opened by clicking **+ Add Prompt & Dataset**. Two-step wizard with a progress t
 
 Two sub-tabs: **Files** (upload a CSV / JSON / JSONL) and **Chat Completions** (import from Activity Log).
 
-<figure><img src=".gitbook/assets/input-data-chat-completions.png.png" alt=""><figcaption><p>Import Test Data From Chat Completions</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/input-data-chat-completions.png.png" alt=""><figcaption><p>Import Test Data From Chat Completions</p></figcaption></figure>
 
 > Setup Optimization Context — Input Data, Chat Completions Tab Filter completions from the Activity Log by date range, model, project, key, and metadata. Total matching rows shown at the bottom before importing.
 
@@ -136,7 +136,7 @@ Two sub-tabs: **Files** (upload a CSV / JSON / JSONL) and **Chat Completions** (
 
 Opened by clicking **+ Configure Optimization**. Configure how GEPA tunes and evaluates your prompt.
 
-<figure><img src=".gitbook/assets/optimizer-configuration.png.png" alt=""><figcaption><p>Optimizer Configurations</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/optimizer-configuration.png.png" alt=""><figcaption><p>Optimizer Configurations</p></figcaption></figure>
 
 > Optimizer Configurations Modal Select the target model, reflection model, budget tier, and batch size. Batch size can be any of 3, 6, 9, 12, 15 or 18 depending on the number of total input samples.
 
@@ -191,7 +191,7 @@ Selecting **Custom** from the dropdown reveals:
 
 After adding a metric, it appears as a card in the Create form with an edit (✏️) and delete (🗑️) icon. Example:
 
-<figure><img src=".gitbook/assets/eval-metric-card.png.png" alt=""><figcaption><p>Add Evaluation Metric</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/eval-metric-card.png.png" alt=""><figcaption><p>Add Evaluation Metric</p></figcaption></figure>
 
 > Evaluation Metrics — Completeness Metric Card Shows Judge Model, Success Score (0–10), and a truncated Evaluation Criteria preview. Edit and delete icons appear top-right.
 
@@ -221,7 +221,7 @@ Estimates are based on selected models and average prompt size. Actual costs may
 
 Navigated to after clicking **Proceed with Optimization**, or by clicking any row in the List. Displays real-time progress during the run and full results once complete.
 
-<figure><img src=".gitbook/assets/optimization-details.png.png" alt=""><figcaption><p>Prompt Optimization Details</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/optimization-details.png.png" alt=""><figcaption><p>Prompt Optimization Details</p></figcaption></figure>
 
 > Optimization Details — Completed State Completed view showing the Optimized Prompt with Final Score (1.000, 14% improvement), Configurations summary, and the All Iterations panel on the right with per-iteration scores.
 
@@ -256,7 +256,7 @@ Each iteration card displays:
 
 Enrich optimization datasets by annotating completions directly in the Activity Log before importing them. Feedback annotations become training signal for GEPA.
 
-<figure><img src=".gitbook/assets/activity-log-feedback.png.png" alt=""><figcaption><p>Activity Log: Add Feedback</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/activity-log-feedback.png.png" alt=""><figcaption><p>Activity Log: Add Feedback</p></figcaption></figure>
 
 > Activity Log — Log Detail Panel with Feedback The Logs detail panel shows Summary, Preview (input/output), Feedback annotation (Good/Bad with comment), Metadata, and Invocation Parameters.
 
@@ -283,4 +283,3 @@ Enrich optimization datasets by annotating completions directly in the Activity 
 | Evaluation Criteria     | Judge prompt              | LLM prompt defining the metric; must return `{"score": 0–1, "feedback": "…"}` |
 | Feedback (Activity Log) | Textual gradient signal   | Good/Bad labels used to guide which failures GEPA prioritises                 |
 | Accepted iteration      | Pareto-accepted candidate | Iteration whose prompt improved the composite score vs. previous best         |
-

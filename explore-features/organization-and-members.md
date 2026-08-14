@@ -43,5 +43,4 @@ Members have **limited access**, focused only on the projects they are explicitl
 
 While this page covers **organization roles**, Members may also have **project-specific roles** (e.g., Project Admin, Project Member) that further define what they can do within each project.
 
-Learn more about these roles in the [Projects](../projects.md) documentation.
-
+Learn more about these roles in the [Projects](projects.md) documentation.

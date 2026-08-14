@@ -26,7 +26,7 @@ Prompts change far more often than application code. Keeping them in Prompt Libr
 
 The lifecycle is: author a prompt in the **Prompt Library**, optionally **optimize** it, save changes as a **new version**, then **reference it by ID** from your application.
 
-<figure><img src=".gitbook/assets/prompt-library.svg" alt=""><figcaption><p>Prompt Library flow: Prompt Library → (optional) Prompt Optimization → New Version → Your App</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/prompt-library.svg" alt=""><figcaption><p>Prompt Library flow: Prompt Library → (optional) Prompt Optimization → New Version → Your App</p></figcaption></figure>
 
 1. **Create version** — Write and store a prompt in the Prompt Library.
 2. **Optimize** (optional) — Run GEPA to refine the system prompt.
@@ -43,11 +43,11 @@ From **Prompts → Prompt Library**, click **Create Prompt** and fill in:
 * **What changed in this version?** — A short changelog note (e.g. `Initial draft`). This is required and builds your version history.
 * **Set as "Production"** — When checked, this version is used for all live requests that reference the prompt by ID.
 
-<figure><img src=".gitbook/assets/New Prompt.png" alt=""><figcaption><p>New Prompt form with name, tags, prompt body, version note, and Set as Production toggle</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/New Prompt.png" alt=""><figcaption><p>New Prompt form with name, tags, prompt body, version note, and Set as Production toggle</p></figcaption></figure>
 
 Saving creates **v1** of the prompt and assigns a permanent prompt ID (e.g. `pmpt_3c743f7f9f9e467eae6525f00e6e0650`). The ID never changes across versions — it's the stable handle your application uses.
 
-<figure><img src=".gitbook/assets/Initial Prompt .png" alt=""><figcaption><p>Prompt Details showing v1 as the only version, marked Latest</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Initial Prompt .png" alt=""><figcaption><p>Prompt Details showing v1 as the only version, marked Latest</p></figcaption></figure>
 
 ### Versioning
 
@@ -57,11 +57,11 @@ Each prompt keeps an ordered list of versions in the left panel of **Prompt Deta
 
 Click **Optimize** on any prompt to run GEPA based [Prompt Optimizations](prompt-optimizations.md) against the current version. GEPA refines the system prompt and saves the result as a new version tagged **Optimized**, leaving your original untouched so you can compare or revert.
 
-<figure><img src=".gitbook/assets/Optimized Prompt.png" alt=""><figcaption><p>Prompt Details showing v2 (Latest, Optimized) alongside v1, with the expanded optimized prompt text</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Optimized Prompt.png" alt=""><figcaption><p>Prompt Details showing v2 (Latest, Optimized) alongside v1, with the expanded optimized prompt text</p></figcaption></figure>
 
 The optimized version is annotated with the optimizer job that produced it (e.g. `Optimized via optimizer job opt_094b50e343624dad99d127f4d57b28d7`), so you can trace any version back to its source. Use **Compare** to view the diff between two versions before promoting one to Production.
 
-<figure><img src=".gitbook/assets/Compare Prompts.png" alt=""><figcaption><p>Compare Prompt Versions showing the differences between two prompt versions</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Compare Prompts.png" alt=""><figcaption><p>Compare Prompt Versions showing the differences between two prompt versions</p></figcaption></figure>
 
 ### Calling a prompt by ID
 
@@ -69,7 +69,7 @@ Reference a stored prompt by passing its `prompt_id` to the chat completions end
 
 The **API Usage** tab on the Prompt Details page generates a ready-to-run snippet for the selected prompt:
 
-<figure><img src=".gitbook/assets/API Usage.png" alt=""><figcaption><p>API Usage tab that shows the configuration to be used in your requests</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/API Usage.png" alt=""><figcaption><p>API Usage tab that shows the configuration to be used in your requests</p></figcaption></figure>
 
 ```bash
 curl -X POST "https://api.fastrouter.ai/api/v1/chat/completions" \
