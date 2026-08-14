@@ -24,7 +24,7 @@ You can access free models in two ways:
 
 Append `:free` to any supported model ID:
 
-```
+```shellscript
 openai/gpt-oss-120b:free
 ```
 
@@ -36,7 +36,7 @@ If a model does not have `:free` enabled, the request is rejected. The standard 
 
 You can use `fastrouter/free` as the model ID to have FastRouter automatically select a free model for each request:
 
-```
+```shellscript
 fastrouter/free
 ```
 
@@ -52,14 +52,7 @@ This allows you to use a single model ID without having to maintain a list of in
 
 `:free` is currently available on the following models:
 
-| Model                         | Free Model ID                     |
-| ----------------------------- | --------------------------------- |
-| OpenAI: GPT-OSS 120B          | `openai/gpt-oss-120b:free`        |
-| OpenAI: GPT-OSS 20B           | `openai/gpt-oss-20b:free`         |
-| Google: Gemma 4 26B           | `google/gemma4-26b:free`          |
-| NVIDIA: Nemotron 3 Nano 30B   | `nvidia/nemotron-3-nano-30b:free` |
-| NVIDIA: Nemotron 3 Super 120B | `nvidia/nemotron-3-super:free`    |
-| Sarvam: Sarvam 105B           | `sarvam/sarvam-105b:free`         |
+<table data-search="false"><thead><tr><th>Model</th><th>Free Model ID</th></tr></thead><tbody><tr><td>OpenAI: GPT-OSS 120B</td><td><code>openai/gpt-oss-120b:free</code></td></tr><tr><td>OpenAI: GPT-OSS 20B</td><td><code>openai/gpt-oss-20b:free</code></td></tr><tr><td>Google: Gemma 4 26B</td><td><code>google/gemma4-26b:free</code></td></tr><tr><td>NVIDIA: Nemotron 3 Nano 30B</td><td><code>nvidia/nemotron-3-nano-30b:free</code></td></tr><tr><td>NVIDIA: Nemotron 3 Super 120B</td><td><code>nvidia/nemotron-3-super:free</code></td></tr><tr><td>Sarvam: Sarvam 105B</td><td><code>sarvam/sarvam-105b:free</code></td></tr></tbody></table>
 
 `:free` is enabled on a per-model basis. Check the [model catalog](https://fastrouter.ai/models?order=newest) — eligible models display a **Free** badge on their detail page.
 
@@ -71,7 +64,7 @@ This allows you to use a single model ID without having to maintain a list of in
 
 **cURL**
 
-```
+```bash
 curl 'https://api.fastrouter.ai/api/v1/chat/completions' \
   --header 'Authorization: Bearer YOUR_API_KEY' \
   --header 'Content-Type: application/json' \
@@ -85,7 +78,7 @@ curl 'https://api.fastrouter.ai/api/v1/chat/completions' \
 
 **Python (OpenAI SDK)**
 
-```
+```python
 from openai import OpenAI
 
 client = OpenAI(
@@ -107,7 +100,7 @@ print(response.choices[0].message.content)
 
 You can also target a specific free model directly:
 
-```
+```shellscript
 openai/gpt-oss-120b:free
 ```
 
@@ -117,7 +110,7 @@ This bypasses the free model router and sends the request to the specified free 
 
 ### Quota & Limits
 
-<table data-header-hidden data-search="false"><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Requests per org per day</td><td>10 per free model. <strong>This limit may vary or change periodically.</strong></td></tr><tr><td>Scope</td><td>Per underlying model — quota tracked independently for each model</td></tr><tr><td>Reset</td><td>Daily at UTC midnight</td></tr><tr><td>Carry-over</td><td>None — unused requests do not roll over</td></tr><tr><td>Paid org behaviour</td><td>Consumes free quota, not billing credits</td></tr><tr><td><code>fastrouter/free</code></td><td>Automatically selects from currently available free models</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Requests per org per day</td><td>10 per free model. <strong>This limit may vary or change periodically.</strong></td></tr><tr><td>Scope</td><td>Per underlying model — quota tracked independently for each model</td></tr><tr><td>Reset</td><td>Daily at UTC midnight</td></tr><tr><td>Carry-over</td><td>None — unused requests do not roll over</td></tr><tr><td>Paid org behaviour</td><td>Consumes free quota, not billing credits</td></tr><tr><td><code>fastrouter/free</code></td><td>Automatically selects from currently available free models</td></tr></tbody></table>
 
 > **Example:** If your org uses `fastrouter/free`, each request is routed to one of the currently available free models. If 10 requests have already been made to a particular underlying model, that model is excluded from further free routing for the remainder of the day. This limit may vary or change periodically.
 
@@ -129,7 +122,7 @@ This bypasses the free model router and sends the request to the specified free 
 
 Returned when `:free` is used on a model that does not have the slug enabled.
 
-```
+```bash
 {
   "error": {
     "code": "free_slug_not_enabled",
@@ -143,7 +136,7 @@ Returned when `:free` is used on a model that does not have the slug enabled.
 
 Returned when your org has exhausted the free quota for a model. The response includes a `Retry-After` header pointing to the next UTC midnight reset.
 
-```
+```bash
 {
   "error": {
     "code": "free_quota_exceeded",
