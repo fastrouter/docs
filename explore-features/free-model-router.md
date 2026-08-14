@@ -45,11 +45,7 @@ Use `fastrouter/free` as the model ID to have FastRouter automatically select a 
 fastrouter/free
 ```
 
-The **FastRouter Free Model Router** automatically selects a free model from the currently available pool for each request.
-
-FastRouter filters the available models based on the capabilities required by your request. For example, requests requiring **image understanding**, **tool calling**, or **structured outputs** are routed only to compatible free models.
-
-This lets you use a single model ID without maintaining a list of individual free models as availability changes.
+The **FastRouter Free Model Router** automatically selects a free model from the currently available pool for each request. This lets you use a single model ID without maintaining a list of individual free models as availability changes.
 
 > **Note:** Requests made through `fastrouter/free` consume the free quota of the underlying model selected for that request.
 
