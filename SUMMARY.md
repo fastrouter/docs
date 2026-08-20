@@ -58,7 +58,7 @@
   * [Image Edit](api-reference/image/image-edit.md)
 * [Audio](api-reference/audio/README.md)
   * [Text to Speech](api-reference/audio/text-to-speech.md)
-  * [Speect to Text (Transcriptions)](api-reference/audio/audio-to-text.md)
+  * [Speech to Text (Transcriptions)](api-reference/audio/transcriptions.md)
 * [Video](api-reference/video.md)
 * [Realtime](api-reference/realtime.md)
 * [Moderations](api-reference/moderations.md)
