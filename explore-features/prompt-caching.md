@@ -53,7 +53,7 @@ Minimum token thresholds before caching applies:
 
 Automatic caching lets OpenAI decide where the reusable prefix ends. Explicit caching lets you decide instead — useful when the stable part of your prompt is a document, a tool schema, or a long set of few-shot examples that you know will repeat.
 
-Supported on both the [Chat Completions](https://claude.ai/api-reference/chat/create-a-chat-completion) and [Responses](https://claude.ai/api-reference/responses/create-a-response) APIs.
+Supported on both the [Chat Completions](https://docs.fastrouter.ai/api-reference/chat-completions) and [Responses](https://docs.fastrouter.ai/api-reference/responses) APIs.
 
 > Explicit prompt caching requires OpenAI GPT-5.6 or newer. Requests to older models are served by automatic caching.
 
@@ -151,7 +151,7 @@ Anthropic requires you to explicitly mark what should be cached using `cache_con
 
 Add `cache_control` once at the request root. FastRouter automatically places the cache breakpoint at the last cacheable block and advances it as the conversation grows.
 
-```json
+```bash
 {
   "model": "anthropic/claude-sonnet-4.6",
   "cache_control": { "type": "ephemeral" },
@@ -165,7 +165,7 @@ Add `cache_control` once at the request root. FastRouter automatically places th
 
 Place `cache_control` on individual content blocks. Useful when you have a large stable payload (a document, RAG chunks, a character card) and want to cache exactly that. Maximum 4 breakpoints per request.
 
-```json
+```bash
 {
   "messages": [
     {
