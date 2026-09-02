@@ -7,13 +7,13 @@ icon: gem
 
 {% updates format="full" %}
 {% update date="2026-07-01" %}
-## Added
+## Added Model Playground: Image & Video
 
 **Model Playground: Image & Video** — Added dedicated Image and Video Playgrounds to experiment with multimodal models directly from the browser. Generate images and videos, compare model outputs, and iterate without writing any code.
 {% endupdate %}
 
 {% update date="2026-06-25" %}
-## Improved
+## Improved Prompt Library&#x20;
 
 **Prompt Library** — Optimize any saved prompt version directly from Prompt Library. Prompt Optimizations now creates a new version automatically, preserving the original while making it easy to review and promote improvements.
 
@@ -23,7 +23,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-06-18" %}
-## Added
+## Added New Video & Multimodal Models
 
 **BytePlus Provider** — Added support for BytePlus-hosted models. FastRouter automatically handles BytePlus' custom pricing flow, including providers that return pricing information asynchronously, ensuring accurate cost tracking and billing.
 
@@ -33,7 +33,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-06-11" %}
-## Added
+## Added MCP Server Templates
 
 **MCP Server Templates** — Added pre-configured templates for popular MCP servers, eliminating the need to manually enter server configuration values. Connect common tools in just a few clicks while retaining the flexibility to customize settings when needed.
 
@@ -41,7 +41,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-06-04" %}
-## Added
+## Added Prompt Library
 
 **Prompt Library** — Write, store, version, and optimize prompts in one place and reference them by ID in API calls, so prompt changes ship without a code deploy. Mark any version as **Production** to serve it to all live requests, and roll back instantly by promoting an earlier version. Optimize — Refine a stored prompt with Prompt Optimizations and save the result as a tracked, optimized version, with **Compare** to diff versions before promoting. Variables — Insert `{{curly braces}}` placeholders in a prompt and fill them per request via the `variables` field.
 
@@ -49,7 +49,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-05-28" %}
-## Added
+## Added Free Models
 
 **Free Models** (`:free`) — Append `:free` to a supported model ID (e.g. `sarvam/sarvam-105b:free`) to route requests at no cost, with the suffix stripped transparently before reaching the provider. Available to all orgs regardless of billing status. Per-model daily quota — 10 requests per org per day, tracked independently per model and reset daily at UTC midnight; paid orgs consume free quota rather than billing credits.
 
@@ -57,7 +57,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-05-21" %}
-## Added
+## Added Support for non-Claude models via Anthropic Messages format
 
 **Support for non-Claude models via Anthropic Messages format** — Route Claude Code requests to OpenAI, DeepSeek, and other FastRouter-supported providers using the same Anthropic-compatible interface\
 **Universal model access in Claude Code** — Launch Claude Code with any FastRouter-supported model using the `--model` flag, without changing tooling or workflows
@@ -66,7 +66,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-05-14" %}
-## Added
+## Added Bring Your Own Keys (BYOK) for external providers
 
 **Bring Your Own Keys (BYOK) for external providers** — Attach your own API credentials from supported LLM providers directly to FastRouter while preserving your negotiated pricing\
 **Custom model provisioning** — Register fine-tuned or privately hosted models with custom endpoints, pricing metadata, and API compatibility mappings\
@@ -77,7 +77,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-05-07" %}
-## Added
+## Added Video Evaluations for AI-generated content&#x20;
 
 **Video Evaluations for AI-generated content** — Automatically assess video outputs at scale using LLM-based judges, with scoring across motion fidelity, audio-visual sync, cinematic quality, and prompt adherence
 
@@ -93,7 +93,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-04-30" %}
-## Added
+## Added Flex Pricing for Vertex AI and Google AI Studio models&#x20;
 
 **Flex Pricing for Vertex AI and Google AI Studio models** — Access supported models at up to **50% lower cost** by using provider Flex inference tiers, ideal for batch jobs, background workloads, and latency-tolerant applications
 
@@ -109,7 +109,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-04-23" %}
-## Added
+## Added Flex Pricing for OpenAI models
 
 **Flex Pricing for OpenAI models** — Access supported models at up to **50% lower cost** by using provider Flex inference tiers, ideal for batch jobs, background workloads, and latency-tolerant applications
 
@@ -125,7 +125,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-04-13" %}
-## Added
+## Added Prompt Optimizations
 
 **Prompt Optimizations (GEPA-powered)** — Automatically improve system prompts using FastRouter’s Genetic-Pareto optimization engine with iterative reflection, mutation, and scoring
 
@@ -139,7 +139,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-04-03" %}
-## Added
+## Added MCP Gateway
 
 **MCP Gateway** — Register any MCP-compatible server (GitHub, Linear, Gmail, or your own APIs) and expose its tools to any model routed through FastRouter, with centralized credential management, project-level scoping, and selective tool exposure
 
@@ -153,7 +153,7 @@ icon: gem
 
 {% updates format="full" %}
 {% update date="2026-03-27" %}
-## Added
+## Added Priority & Category Based Routing Strategies
 
 **Priority Routing** — Route requests through models in a fixed priority order, with automatic sequential fallback for deterministic, predictable routing
 
@@ -163,7 +163,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-03-20" %}
-## Added
+## Added Traceparent Support
 
 **Tracing (W3C `traceparent` support)** — Group multiple LLM API calls into a single trace with ordered spans
 
