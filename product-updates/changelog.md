@@ -6,6 +6,94 @@ icon: gem
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-02" %}
+## Added Image Evaluations for AI-generated content
+
+**Image Evaluations** — Assess image generation outputs at scale using multimodal LLM judges, scoring across prompt adherence, visual quality, composition, and reference-image fidelity — the same Custom Evaluations workflow you already use for text and video.
+
+**Log-based dataset creation** — Import image generation requests directly from your Activity Log with filtering and sampling, no manual uploads.
+
+[https://docs.fastrouter.ai/explore-features/custom-evaluations](https://docs.fastrouter.ai/explore-features/custom-evaluations)
+{% endupdate %}
+
+{% update date="2026-08-26" %}
+## Added Insights
+
+**Insights** — Weekly, evidence-backed recommendations that cut LLM spend without giving up output quality. Each recommendation is scoped to a real project, key, and model, comes with a projected weekly saving, and shows the full calculation and raw request evidence behind the number. Nothing is applied automatically — you review and decide.
+
+**Three recommendation types** — _Caching_ detects repeated system-prompt prefixes and models the saving from prompt caching; _Flex Tier_ reprices high-volume standard-tier traffic at provider Flex rates (same model, same output); _Model Switch_ replays sampled requests against cheaper alternatives and scores both with an LLM judge, linking out to the full evaluation run.
+
+**Ranked, filterable view** — Summary bar with projected total and per-category savings, sortable cards, and a detail panel covering scope, methodology, warnings, evidence, and how to apply. Model Switch is opt-in under Settings since it consumes billable inference.
+
+[https://docs.fastrouter.ai/explore-features/insights](https://docs.fastrouter.ai/explore-features/insights)
+{% endupdate %}
+
+{% update date="2026-08-19" %}
+## Added Prompt Compression
+
+**Prompt Compression** — Opt-in, per-request compression that shrinks messages before they reach the provider, cutting input tokens without changing the response. Add a single `optimize.compress` block to any Chat Completions or Anthropic Messages request; everything else stays as-is.
+
+**Three engines** — `headroom` (lossless structural compression for system prompts, rules, and tool schemas), `caveman` (rule-based prose compaction that preserves negations, numbers, code, URLs, and quoted strings), and `llmlingua` (ML token pruning for RAG chunks, docs, and transcripts). Combine them with `"engine": "all"` for maximum savings.
+
+**Audit mode & fail-open** — Set `"mode": "audit"` to measure what you would save without changing a byte. If compression can't run, your original messages are sent unchanged. Savings are reported via `X-FastRouter-Compression-*` response headers.
+
+**Compression stats in the Dashboard & Activity Log** — See original vs compressed prompts and tokens saved per request in the Activity Log flyout, plus a Dashboard tab tracking compression outcomes across your traffic.
+
+[https://docs.fastrouter.ai/explore-features/prompt-compression](https://docs.fastrouter.ai/explore-features/prompt-compression)
+{% endupdate %}
+
+{% update date="2026-08-12" %}
+## **Explicit prompt caching for OpenAI GPT-5.6+**
+
+Control exactly where the cached prefix ends with `prompt_cache_breakpoint` and `prompt_cache_options` on both Chat Completions and Responses APIs, alongside FastRouter's automatic sticky routing that keeps follow-up requests on the provider holding a warm cache.
+
+[https://docs.fastrouter.ai/explore-features/prompt-caching](https://docs.fastrouter.ai/explore-features/prompt-caching)
+{% endupdate %}
+
+{% update date="2026-08-05" %}
+## Added Free Model Router
+
+Use `fastrouter/free` as the model ID to have FastRouter automatically select a free model. The **FastRouter Free Model Router** automatically selects a free model from the currently available pool for each request. This lets you use a single model ID without maintaining a list of individual free models as availability changes.
+{% endupdate %}
+
+{% update date="2026-07-29" %}
+## Added New Video & Multimodal Models
+
+**BytePlus Provider** — Added support for BytePlus-hosted models. **New Video & Multimodal Models** — Added support for the latest image, video, and reasoning models, including x-ai/grok-imagine-video and more.
+
+[https://fastrouter.ai/models?order=newest](https://fastrouter.ai/models?order=newest)
+{% endupdate %}
+
+{% update date="2026-07-22" %}
+## Added MCP Server Templates
+
+**MCP Server Templates** — Added pre-configured templates for popular MCP servers, eliminating the need to manually enter server configuration values. Connect common tools in just a few clicks while retaining the flexibility to customize settings when needed.
+
+[https://docs.fastrouter.ai/mcp-gateway](https://docs.fastrouter.ai/mcp-gateway)
+{% endupdate %}
+
+{% update date="2026-07-15" %}
+## Added Cache Analytics in the Dashboard
+
+**Cache Analytics** — A dedicated caching view in the Dashboard showing cached vs uncached prompt tokens, cache-write vs cache-read volume, hit rate, and the resulting cost savings over time, filterable by key, model, and provider.
+
+**Per-request cache breakdown** — The Activity Log flyout now surfaces cache-read and cache-write tokens for every request, including Anthropic cache usage, so you can confirm caching is working on a specific key or conversation.
+
+[https://docs.fastrouter.ai/explore-features/prompt-caching](https://docs.fastrouter.ai/explore-features/prompt-caching)
+{% endupdate %}
+
+{% update date="2026-07-08" %}
+## Added FastRouter Blend: Multi-Model Deliberation
+
+**FastRouter Blend** — Ask a panel of models the same prompt in parallel, then have a judge model compare their answers into a structured analysis: agreements, disagreements, coverage gaps, standout insights, missing considerations, and confidence notes. The judge evaluates rather than merges, so you see exactly where models agree, conflict, and what each uniquely contributed.
+
+**Two ways to use it** — Set `"model": "fastrouter/blend"` to always run Blend and get a readable summary as the completion, or attach the `fastrouter:blend` server tool to any normal request and let the outer model decide when to call it.
+
+**Configurable panel & judge** — Supply up to 5 `analysis_models` or let the router auto-select the top 3 candidates; override the judge with `model`. Sub-calls reuse your existing routing, BYOK, and credits, with aggregated panel + judge usage and cost returned on every response.
+
+[https://docs.fastrouter.ai/explore-features/fastrouter-blend-multi-model-deliberation](https://docs.fastrouter.ai/explore-features/fastrouter-blend-multi-model-deliberation)
+{% endupdate %}
+
 {% update date="2026-07-01" %}
 ## Added Model Playground: Image & Video
 
