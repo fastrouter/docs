@@ -17,6 +17,7 @@
 * [Keys & Settings](explore-features/keys-and-settings.md)
 * [Add External Keys (BYOK)](explore-features/add-external-keys-byok.md)
 * [Custom Evaluations](explore-features/custom-evaluations.md)
+* [Image Evaluations](explore-features/image-evaluations.md)
 * [Video Evaluations](explore-features/video-evaluations.md)
 * [Insights](explore-features/insights.md)
 * [Prompt Library](explore-features/prompt-library.md)
