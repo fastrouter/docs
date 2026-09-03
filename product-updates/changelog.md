@@ -13,7 +13,7 @@ icon: gem
 
 **Log-based dataset creation** — Import image generation requests directly from your Activity Log with filtering and sampling, no manual uploads.
 
-[https://docs.fastrouter.ai/explore-features/custom-evaluations](https://docs.fastrouter.ai/explore-features/custom-evaluations)
+[https://docs.fastrouter.ai/explore-features/image-evaluations](https://docs.fastrouter.ai/explore-features/image-evaluations)
 {% endupdate %}
 
 {% update date="2026-08-26" %}
@@ -43,7 +43,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-08-12" %}
-## **Explicit prompt caching for OpenAI GPT-5.6+**
+## Explicit prompt caching for OpenAI GPT-5.6+
 
 Control exactly where the cached prefix ends with `prompt_cache_breakpoint` and `prompt_cache_options` on both Chat Completions and Responses APIs, alongside FastRouter's automatic sticky routing that keeps follow-up requests on the provider holding a warm cache.
 
@@ -57,11 +57,9 @@ Use `fastrouter/free` as the model ID to have FastRouter automatically select a 
 {% endupdate %}
 
 {% update date="2026-07-29" %}
-## Added New Video & Multimodal Models
+## Added Artifact Builder in the Model Playground
 
-**BytePlus Provider** — Added support for BytePlus-hosted models. **New Video & Multimodal Models** — Added support for the latest image, video, and reasoning models, including x-ai/grok-imagine-video and more.
-
-[https://fastrouter.ai/models?order=newest](https://fastrouter.ai/models?order=newest)
+**Artifact Builder In Text Playground** — Build interactive **webpages and apps directly in FastRouter’s Text Playground** with the new Artifact Builder. Turn your prompts into functional, editable artifacts and iterate on them in real time—all within the playground.
 {% endupdate %}
 
 {% update date="2026-07-22" %}
@@ -95,7 +93,7 @@ Use `fastrouter/free` as the model ID to have FastRouter automatically select a 
 {% endupdate %}
 
 {% update date="2026-07-01" %}
-## Added Model Playground: Image & Video
+## Added Image & Video Model Playgrounds
 
 **Model Playground: Image & Video** — Added dedicated Image and Video Playgrounds to experiment with multimodal models directly from the browser. Generate images and videos, compare model outputs, and iterate without writing any code.
 {% endupdate %}
