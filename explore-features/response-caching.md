@@ -518,13 +518,6 @@ curl --location 'https://api.fastrouter.ai/api/v1/getAsyncResponse' \
 
 The `taskId` / `model` rules for `getAsyncResponse` are unchanged: `fr_`-prefixed IDs require no `model`.
 
-**Webhooks on Cache Hits**
-
-If the hitting request includes a `callback_url`, FastRouter fires the callback:
-
-* Immediately, if the cached task has already completed
-* When the shared job finishes, if the cached task is still in flight (all subscribed callback URLs are notified)
-
 **Billing Timing**
 
 * **MISS:** `estimate_usage` at submission; final `usage` billed at standard price when the job **completes**. Failed jobs are not billed.
