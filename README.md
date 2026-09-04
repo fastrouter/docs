@@ -120,27 +120,17 @@ Every call attributed, every anomaly flagged.
 
 Everything the modern stack expects, unified across providers.
 
-| Capability                                                                                                                     | What it does                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Structured Outputs](explore-features/structured-outputs.md)                                                                   | JSON schema-constrained responses across all major providers.                                                                                                 |
-| [Function Calling](explore-features/function-calling.md)                                                                       | Unified tool use, whichever provider serves the request.                                                                                                      |
-| [Reasoning Tokens](explore-features/reasoning-tokens.md)                                                                       | Control and inspect thinking tokens on supported models.                                                                                                      |
-| [Image](https://claude.ai/api-reference/image) & [Video](api-reference/video.md)                                               | Generation and editing across providers through one API.                                                                                                      |
-| [Audio](api-reference/audio/) & [Embeddings](api-reference/embeddings.md)                                                      | Transcription, text-to-speech, and embeddings on the same endpoint.                                                                                           |
-| [Image Processing](https://claude.ai/explore-features/image-processing) & [PDF Processing](explore-features/pdf-processing.md) | Send images and PDFs directly as input, handled natively at the gateway.                                                                                      |
-| [Realtime API](https://claude.ai/explore-features/realtime-api-websocket)                                                      | Low-latency speech-to-speech and text streaming over WebSocket.                                                                                               |
-| [MCP Gateway](https://claude.ai/explore-features/mcp-gateway)                                                                  | Register MCP tool servers once and expose their tools to any model. Credentials are vaulted and injected at the gateway — agents never see raw provider keys. |
-| [Web Search](https://claude.ai/explore-features/web-search)                                                                    | Attach web search as a tool on any model request, with results injected into context automatically.                                                           |
+<table data-search="false"><thead><tr><th>Capability</th><th>What it does</th></tr></thead><tbody><tr><td><a href="explore-features/structured-outputs.md">Structured Outputs</a></td><td>JSON schema-constrained responses across all major providers.</td></tr><tr><td><a href="explore-features/function-calling.md">Function Calling</a></td><td>Unified tool use, whichever provider serves the request.</td></tr><tr><td><a href="explore-features/reasoning-tokens.md">Reasoning Tokens</a></td><td>Control and inspect thinking tokens on supported models.</td></tr><tr><td><a href="api-reference/image/image-generation.md">Image</a> &#x26; <a href="api-reference/video.md">Video</a></td><td>Generation and editing across providers through one API.</td></tr><tr><td><a href="api-reference/audio/">Audio</a> &#x26; <a href="api-reference/embeddings.md">Embeddings</a></td><td>Transcription, text-to-speech, and embeddings on the same endpoint.</td></tr><tr><td><a href="explore-features/image-processing.md">Image Processing</a> &#x26; <a href="explore-features/pdf-processing.md">PDF Processing</a></td><td>Send images and PDFs directly as input, handled natively at the gateway.</td></tr><tr><td><a href="api-reference/realtime.md">Realtime API</a></td><td>Low-latency speech-to-speech and text streaming over WebSocket.</td></tr><tr><td><a href="explore-features/mcp-gateway.md">MCP Gateway</a></td><td>Register MCP tool servers once and expose their tools to any model. Credentials are vaulted and injected at the gateway — agents never see raw provider keys.</td></tr><tr><td><a href="explore-features/web-search.md">Web Search</a></td><td>Attach web search as a tool on any model request, with results injected into context automatically.</td></tr></tbody></table>
 
 ### Integrate
 
 Route the tools your team already uses through FastRouter for cost control, observability, and governance.
 
-* [**Coding Assistants**](https://claude.ai/integrations/coding-assistants) — Claude Code, Cursor, Codex CLI, Cline, Aider, Roo Code, OpenCode, Kilo Code, Xcode
-* [**Agents**](https://claude.ai/integrations/agents) — LangGraph, CrewAI, AutoGen, Agno, OpenAI Agents SDK, Pydantic AI, OpenClaw, Hermes
-* [**Apps & Frameworks**](https://claude.ai/integrations/app) — LangChain, LlamaIndex, Instructor, n8n, Open WebUI, Scalekit
+* [Coding Assistants](integrations/coding-assistants/) — Claude Code, Cursor, Codex CLI, Cline, Aider, Roo Code, OpenCode, Kilo Code, Xcode
+* [Agents](integrations/agents/) — LangGraph, CrewAI, AutoGen, Agno, OpenAI Agents SDK, Pydantic AI, OpenClaw, Hermes
+* [Apps & Frameworks](integrations/app/) — LangChain, LlamaIndex, Instructor, n8n, Open WebUI, Scalekit
 
-Building with an AI coding assistant? Point it at [skill.md](https://claude.ai/skill) to give it working knowledge of FastRouter's features.
+Building with an AI coding assistant? Point it at [skill.md](https://docs.fastrouter.ai/skill.md) to give it working knowledge of FastRouter's features.
 
 ***
 
