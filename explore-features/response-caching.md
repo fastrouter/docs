@@ -30,7 +30,7 @@ FastRouter supports **exact-match** and **semantic-match** caching with flexible
 
 ***
 
-#### Key Benefits
+## Key Benefits
 
 | Benefit                 | Description                                                                                             |
 | ----------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -43,7 +43,7 @@ FastRouter supports **exact-match** and **semantic-match** caching with flexible
 
 ***
 
-#### Design Principles
+## Design Principles
 
 1. **One contract, all modalities.** Same header, same `cache` object. Parameters that don't apply to a modality are ignored (never rejected).
 2. **Modality-appropriate defaults.** Text defaults to semantic matching (`0.75`); images and videos default to exact matching (`1.0`) because paraphrases of creative prompts are rarely interchangeable.
@@ -52,7 +52,7 @@ FastRouter supports **exact-match** and **semantic-match** caching with flexible
 
 ***
 
-#### Feature Specification
+## Feature Specification
 
 **Request Schema**
 
@@ -99,7 +99,7 @@ For image and video requests, semantic matching is applied to the **prompt text 
 
 ***
 
-#### Text Caching
+## Text Caching
 
 **Sample Request**
 
@@ -192,7 +192,7 @@ Cache HIT:
 
 ***
 
-#### Media Caching — Shared Behavior (Async Image + Video)
+## Media Caching — Shared Behavior (Async Image + Video)
 
 Async image generation and video generation share one cache implementation. Both return a task ID at submission and are retrieved through `POST /api/v1/getAsyncResponse`.
 
@@ -243,7 +243,7 @@ For cache lookup, FastRouter normalizes to its **canonical model slug** — `byt
 
 ***
 
-#### Image Caching (Async)
+## Image Caching (Async)
 
 **Sample Request**
 
@@ -386,7 +386,7 @@ Note that `created` here (`1788502550`) predates the hitting request's `created`
 
 ***
 
-#### Video Caching
+## Video Caching
 
 Video generation is always asynchronous: `POST /api/v1/videos` returns `data.taskId`, and the client polls `POST /api/v1/getAsyncResponse` until `data.status` is `succeed` / `completed`. A cache hit returns the **same `taskId`**, so the standard polling flow works unchanged.
 
@@ -532,7 +532,7 @@ If the hitting request includes a `callback_url`, FastRouter fires the callback:
 
 ***
 
-#### Cache Lookup
+## Cache Lookup
 
 **Cache Lookup Components**
 
@@ -554,7 +554,7 @@ The endpoint is part of the key. A `cache_key` of `myapp` used on `/v1/chat/comp
 
 ***
 
-#### Cache Response Fields
+## Cache Response Fields
 
 | Field                  | Type    | Modality    | Description                                                                 |
 | ---------------------- | ------- | ----------- | --------------------------------------------------------------------------- |
@@ -568,7 +568,7 @@ The endpoint is part of the key. A `cache_key` of `myapp` used on `/v1/chat/comp
 
 ***
 
-#### Pricing
+## Pricing
 
 **Cache Pricing**
 
@@ -590,7 +590,7 @@ video_hit_cost = 0
 
 ***
 
-#### Limits
+## Limits
 
 | Limit                      | Value                               |
 | -------------------------- | ----------------------------------- |
@@ -603,7 +603,7 @@ video_hit_cost = 0
 
 ***
 
-#### Roadmap
+## Roadmap
 
 | Item                                                     | Status  |
 | -------------------------------------------------------- | ------- |
