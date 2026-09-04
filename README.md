@@ -18,14 +18,21 @@ FastRouter is a drop-in replacement for the OpenAI SDK. Change two lines:
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://api.fastrouter.ai/api/v1",
-    api_key="YOUR_FASTROUTER_API_KEY",
+    base_url="https://api.fastrouter.ai/api/v1", # FastRouter base URL
+    api_key="YOUR_FASTROUTER_API_KEY", # Your FastRouter API key
 )
 
-response = client.chat.completions.create(
-    model="openai/gpt-5.6-sol",
-    messages=[{"role": "user", "content": "Hello from FastRouter"}],
+completion = client.chat.completions.create(
+    model="openai/gpt-5.6-sol", # Replace with your model ID
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the meaning of life?"
+        }
+    ]
 )
+
+print(completion.choices[0].message.content)
 ```
 
 Prefer a different format? FastRouter also speaks the [Anthropic Messages API](https://docs.fastrouter.ai/api-reference/anthropic-messages-format) and the [Gemini Interactions API](https://docs.fastrouter.ai/api-reference/gemini-interactions-api-format) natively — use whichever endpoint your stack already speaks.
