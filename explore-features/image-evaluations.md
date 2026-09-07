@@ -156,7 +156,6 @@ Because the rubric instructed the judge to drop the overall score to 2 on any si
 * **Be specific in your rubric**: Vague judge prompts produce inconsistent scores. Break your evaluation into named dimensions (e.g. material realism, physical plausibility, prompt adherence) and score each separately.
 * **Watch out for harsh aggregation rules**: Instructions like "drop the overall score to 2 if there is any error" make pass rates collapse to 0%. That's useful for strict compliance gates, but for quality tracking prefer an average across dimensions so you can see movement between runs.
 * **Set the pass threshold deliberately**: The threshold defines what "good enough" means for your use case. Pick it before you look at the first set of scores so it isn't fitted to one run.
-* **Monitor costs**: Image judge calls are more expensive than text, especially at higher resolutions. The credit estimate before each run tells you what to expect.
 
 ***
 
