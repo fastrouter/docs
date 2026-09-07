@@ -31,7 +31,7 @@ Evaluations are managed through the FastRouter dashboard, where you can create, 
 
 To start, navigate to the "Evaluations" section in your FastRouter dashboard and click "New Evaluation."
 
-<figure><img src="../.gitbook/assets/New Evaluation (1).png" alt=""><figcaption><p>Custom Evaluations: Create Evaluation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/New Evaluation (1) (1).png" alt=""><figcaption><p>Custom Evaluations: Create Evaluation</p></figcaption></figure>
 
 1. **Name Your Evaluation:** Provide a descriptive name (e.g., "Math Query Benchmark").
 2. **Import Test Data:** Upload or import chat completion logs or datasets. You can:
@@ -40,7 +40,7 @@ To start, navigate to the "Evaluations" section in your FastRouter dashboard and
    * Choose input/output text to filter rows.
    * Set a sample size (e.g., 10%) to evaluate a subset of your data for efficiency.
 
-<figure><img src="../.gitbook/assets/Import Test Data.png" alt=""><figcaption><p>Custom Evaluations: Import Test Data</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Import Test Data (1).png" alt=""><figcaption><p>Custom Evaluations: Import Test Data</p></figcaption></figure>
 
 3. **Add Runs:** Select model runs to generate outputs (e.g., "anthropic/claude-4.5"). You can add multiple runs for side-by-side comparison.
 
@@ -85,7 +85,7 @@ Once the evaluation is complete, access the results of a particular custom evalu
 
 * **Judge Reasoning:** For each test criterion and score, you can drill down into the individual responses for details of the judge reasoning.
 
-<figure><img src="../.gitbook/assets/Judge Reasoning.png" alt=""><figcaption><p>Custom Evaluations: Judge Reasoning</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/Judge Reasoning (1).png" alt=""><figcaption><p>Custom Evaluations: Judge Reasoning</p></figcaption></figure>
 
 ***
 
