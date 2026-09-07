@@ -129,13 +129,13 @@ Access results from the **Evaluations** listing page by clicking your evaluation
 
 **Example output for a jewellery ad eval (`x-ai/grok-imagine-image-quality`):**
 
-| Metric                 | Value                           |
-| ---------------------- | ------------------------------- |
-| Custom Grader          | Fail: 2 (Range 0–7, Pass ≥ 5.1) |
-| Latency                | 4,767 ms                        |
-| Generation Cost        | μ$50,000.0000 ($0.05)           |
-| Total Judge Score Cost | $0.0243                         |
-| Pass Rate              | 0%                              |
+| Metric                   | Value                                                                                                                                               |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Custom Grader            | Fail: 2 (Range 0–7, Pass ≥ 5.1)                                                                                                                     |
+| Latency                  | 4,767 ms                                                                                                                                            |
+| Original Generation Cost | <p>μ$50,000.0000 ($0.05) </p><p><strong>Note:</strong> This cost is only incurred during the original generation and not during the evaluation.</p> |
+| Total Judge Score Cost   | $0.0243                                                                                                                                             |
+| Pass Rate                | 0%                                                                                                                                                  |
 
 **Judge reasoning summary:**
 
