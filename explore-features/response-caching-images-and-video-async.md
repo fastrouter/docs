@@ -91,7 +91,7 @@ Semantic matching is applied to the **prompt text only**. All other generation p
 
 ***
 
-### How a Cache Hit Behaves
+## How a Cache Hit Behaves
 
 **Detecting a hit.** The creation response carries a top-level `cached: true` when the returned task ID came from cache. The field is absent on a miss. This is the field clients should branch on.
 
@@ -111,7 +111,7 @@ Semantic matching is applied to the **prompt text only**. All other generation p
 
 ***
 
-### Cache Lookup
+## Cache Lookup
 
 ```
   org_id,
@@ -127,7 +127,7 @@ FastRouter normalizes to its **canonical model slug** for lookup — `bytedance/
 
 ***
 
-### Image Caching (Async)
+## Image Caching (Async)
 
 #### Sample Request
 
@@ -260,7 +260,7 @@ Polling the shared task ID returns byte-identical `data` and `fastrouter_assets`
 
 ***
 
-### Video Caching
+## Video Caching
 
 Video generation is always asynchronous: `POST /api/v1/videos` returns `data.taskId`, and the client polls `POST /api/v1/getAsyncResponse` until `data.status` is `succeed` / `completed`.
 
