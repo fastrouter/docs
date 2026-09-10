@@ -31,6 +31,7 @@
 * [PDF Processing](explore-features/pdf-processing.md)
 * [Dynamic Tags Per Request](explore-features/dynamic-tags-per-request.md)
 * [Credits](explore-features/credits.md)
+* [Observability Destinations](explore-features/observability-destinations.md)
 * [Provisioning Keys](explore-features/provisioning-keys.md)
 * [Structured Outputs](explore-features/structured-outputs.md)
 * [Function Calling](explore-features/function-calling.md)
