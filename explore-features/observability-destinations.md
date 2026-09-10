@@ -129,8 +129,7 @@ Then consume from the topic:
 kafka-console-consumer.sh \
   --bootstrap-server kafka-broker.example.com:9093 \
   --topic fastrouter-traces \
-  --consumer.config client.properties \
-  --from-beginning
+  --consumer.config client.properties
 ```
 
 ***
