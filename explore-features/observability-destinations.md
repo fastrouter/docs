@@ -11,7 +11,7 @@ icon: up-from-line
 
 ## Overview
 
-FastRouter records latency, tokens, cost, and the full request and response for every call you route through it. Observability Destinations let you keep that data in your own infrastructure: connect a Kafka cluster (or ClickHouse database - coming soon), and FastRouter streams each request trace to it.
+FastRouter records latency, tokens, cost, and the full request and response for every call you route through it. Observability let you keep that data in your own infrastructure: connect a Kafka cluster (or ClickHouse database - coming soon), and FastRouter streams each request trace to it.
 
 * **Unlimited retention in your stack.** Traces live in storage you control, for as long as your own policies allow.
 * **Query with your own tooling.** Analyze traces with the dashboards, warehouses, and pipelines your team already runs.
@@ -41,6 +41,8 @@ FastRouter records latency, tokens, cost, and the full request and response for 
 3. From there, retention, access control, and querying are governed entirely by your own infrastructure.
 
 Traces continue to appear in the FastRouter [Dashboard & Activity Log](quickstart.md#activity-log) as usual. Destinations are an additional copy, not a replacement.
+
+<figure><img src="../.gitbook/assets/Screenshot 2026-09-10 at 11.05.27 AM.png" alt=""><figcaption><p>Access Observability from the Monitor section of the sidebar</p></figcaption></figure>
 
 ***
 
