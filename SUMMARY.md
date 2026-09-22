@@ -42,6 +42,7 @@
 * [Custom Alerts](explore-features/alerts.md)
 * [System Alerts](explore-features/system-alerts.md)
 * [Tracing](explore-features/tracing.md)
+* [TypeSafe Jev — Structured Evaluation](explore-features/typesafe-jev-structured-evaluation.md)
 * [MCP Gateway](explore-features/mcp-gateway.md)
 * [Web Search](explore-features/web-search.md)
 
