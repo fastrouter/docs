@@ -42,7 +42,7 @@ The response's `model` field reports the exact version that served the request (
 
 ***
 
-### Quickstart
+## Quickstart
 
 #### cURL
 
