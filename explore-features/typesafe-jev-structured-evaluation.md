@@ -2,6 +2,7 @@
 description: >-
   Evaluate text or structured data against typed yes/no, choice, and score
   questions using TypeSafe's Jev models through FastRouter.
+icon: gavel
 ---
 
 # TypeSafe Jev — Structured Evaluation
