@@ -158,7 +158,7 @@ Question keys are identifiers only — they are **not** sent to the model and do
 | `state`     | string \| object \| array | Yes      | The content to evaluate.                                                |
 | `questions` | map\<string, Question>    | Yes      | Named questions. Each value is a `noul`, `choice`, or `score` question. |
 
-Every question has a `type` and `instructions`. `instructions` (and criteria values) can be a string, object, or array — see [Structured instructions](https://claude.ai/chat/1394a175-27d7-41bf-9c69-db45cb8377c5#structured-instructions).
+Every question has a `type` and `instructions`. `instructions` (and criteria values) can be a string, object, or array — see [Structured Instructions](typesafe-jev-structured-evaluation.md#structured-instructions).
 
 ***
 
