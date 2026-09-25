@@ -45,6 +45,7 @@
 * [TypeSafe Jev — Structured Evaluation](explore-features/typesafe-jev-structured-evaluation.md)
 * [MCP Gateway](explore-features/mcp-gateway.md)
 * [Web Search](explore-features/web-search.md)
+* [Zero Data Retention](explore-features/zero-data-retention.md)
 
 ***
 

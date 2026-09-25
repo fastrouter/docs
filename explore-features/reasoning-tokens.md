@@ -144,7 +144,7 @@ The GPT-6 family does not accept `none` or `minimal`. FastRouter sends `low` ins
 
 ***
 
-#### **Google Gemini Reasoning Behavior**
+## **Google Gemini Reasoning Behavior**
 
 Google Gemini models support reasoning, but the API used depends on the model generation.
 
