@@ -11,7 +11,7 @@ icon: empty-set
 
 Some workloads can't have prompts or completions stored by a model provider, not even temporarily for logging, abuse monitoring, or training. FastRouter lets you restrict any request to **Zero Data Retention (ZDR)** providers by adding the `:zdr` suffix to the model slug.
 
-When you use `:zdr`, FastRouter routes your request **only** to providers that have committed to not retaining your request or response data. If no ZDR provider can serve the model, the request fails instead of silently falling back to a provider that retains data.
+When you use `:zdr`, FastRouter routes your request **only** to providers whose settings and terms indicate zero data retention for your request and response data. If no ZDR provider can serve the model, the request fails instead of falling back to another provider.
 
 ***
 
@@ -53,6 +53,31 @@ The following providers are currently treated as Zero Data Retention providers o
 | Together   |
 
 A model can be used with `:zdr` only if at least one of these providers serves it on FastRouter.
+
+***
+
+## What ZDR does not cover
+
+`:zdr` applies only to the choice of **model provider**, routing your request to providers whose settings and terms indicate zero data retention. It doesn't turn off FastRouter features that need to store or pass along your prompts to work. If you use any of the following on a `:zdr` request, your prompts (and in some cases responses) can be stored:
+
+| Feature                                | Why data can be stored                                                                          |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Plugins such as PDF processing**     | The plugin processes your file or prompt content as part of handling the request.               |
+| **Web search tool / `:online`**        | Your query is sent to a search service to fetch results, outside the ZDR provider.              |
+| **Responses API with preserved state** | Keeping conversation state across requests requires storing earlier prompts and responses.      |
+| **FastRouter response caching**        | Prompts and responses are stored so that matching future requests can be served from the cache. |
+
+If you want to minimize data retention, avoid these features on requests that carry sensitive data.
+
+#### Disabling content logging on FastRouter
+
+Separately from provider retention, FastRouter can log prompt and response content for your requests. You can **disable content logging at the API key level** to turn off prompt and response logging for all requests made with that key.
+
+To reduce how much of your data is retained, you can combine these:
+
+1. Use the `:zdr` slug so only ZDR providers serve your requests.
+2. Use an API key with content logging disabled.
+3. Avoid the features listed above.
 
 ***
 
@@ -170,7 +195,7 @@ Response:
 
 ```json
 {
-    "error": "deepseek/deepseek-v4.1-flash is not a valid model ID or no providers found . No provider for this model supports Zero Data Retention (:zdr)"
+    "error": "deepseek/deepseek-v4.1-flash is not a valid model ID or no providers found. No provider for this model supports Zero Data Retention (:zdr)"
 }
 ```
 
@@ -193,5 +218,7 @@ This error can occur when:
 **Will FastRouter ever fall back to a non-ZDR provider?** No. When `:zdr` is set, requests are routed only to ZDR-compliant providers. If none are available, the request fails with an error.
 
 **How do I confirm which provider handled my request?** Check the `usage.provider` field in the response.
+
+**Does `:zdr` mean my prompts are never stored anywhere?** No. `:zdr` affects only which model provider is selected, based on that provider's settings and terms. Plugins such as PDF processing, the web search tool / `:online`, stateful Responses API usage, and FastRouter response caching can store prompts.
 
 **Can I use `:zdr` with every model?** Only with models served by at least one supported ZDR provider. For other models, the request returns the error shown above.
