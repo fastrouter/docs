@@ -6,6 +6,34 @@ icon: gem
 # Changelog
 
 {% updates format="full" %}
+{% update date="2026-09-29" %}
+## Added Model Deprecation Insights
+
+**Advance notice of retiring models** — Emails and insights highlighting models scheduled to retire with targeted warnings sent to customers using affected models.
+{% endupdate %}
+
+{% update date="2026-09-23" %}
+## Added Model Deprecation Insights
+
+**Advance notice of retiring models** — Emails and insights highlighting models scheduled to retire with targeted warnings sent to customers using affected models.
+{% endupdate %}
+
+{% update date="2026-09-16" %}
+## Added Observability Destinations
+
+**Stream request logs to your own Kafka cluster** — Configure observability destinations directly in the Dashboard to send request logs—including latency, token usage, cost, and full request and response payloads—to your own infrastructure.
+
+[https://docs.fastrouter.ai/explore-features/observability-destinations](https://docs.fastrouter.ai/explore-features/observability-destinations)
+{% endupdate %}
+
+{% update date="2026-09-09" %}
+## Added Multimodal Response Caching
+
+**Multimodal Response Caching** — Reuse cached image and video outputs when requests match identical prompts or cache keys. FastRouter returns the cached assets instead of generating them again.
+
+[https://docs.fastrouter.ai/explore-features/response-caching-images-and-video-async](https://docs.fastrouter.ai/explore-features/response-caching-images-and-video-async)
+{% endupdate %}
+
 {% update date="2026-09-02" %}
 ## Added Image Evaluations for AI-generated content
 
@@ -43,7 +71,7 @@ icon: gem
 {% endupdate %}
 
 {% update date="2026-08-12" %}
-## Explicit prompt caching for OpenAI GPT-5.6+
+## Explicit Prompt Caching for OpenAI GPT-5.6+
 
 Control exactly where the cached prefix ends with `prompt_cache_breakpoint` and `prompt_cache_options` on both Chat Completions and Responses APIs, alongside FastRouter's automatic sticky routing that keeps follow-up requests on the provider holding a warm cache.
 
