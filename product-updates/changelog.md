@@ -7,9 +7,9 @@ icon: gem
 
 {% updates format="full" %}
 {% update date="2026-09-29" %}
-## Added Model Deprecation Insights
+## Added TypeSafe Jev — Structured Evaluation
 
-**Advance notice of retiring models** — Emails and insights highlighting models scheduled to retire with targeted warnings sent to customers using affected models.
+**Structured Evaluation** — Evaluate text or structured JSON using TypeSafe’s Jev models through FastRouter. Send content alongside typed questions and get back structured, probability-calibrated answers instead of free-form text—ideal for classification, routing, moderation, and quality scoring..
 {% endupdate %}
 
 {% update date="2026-09-23" %}
