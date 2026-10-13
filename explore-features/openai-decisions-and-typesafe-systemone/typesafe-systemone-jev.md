@@ -5,9 +5,7 @@ description: >-
 icon: gavel
 ---
 
-# TypeSafe Jev — Structured Evaluation
-
-***
+# TypeSafe SystemOne: Jev
 
 ## Introduction
 
@@ -21,10 +19,11 @@ Use it for classification, routing, triage, moderation, quality scoring, dedupli
 * **Unified billing and usage** — Jev usage appears alongside all your other model spend.
 * **Observability** — every request is visible in the Activity Log with tokens, latency, and cost.
 * **Structured by design** — answers are typed (`noul`, `choice`, `score`) and include probabilities and confidence, so no output parsing is needed.
+* **Switchable response format** — receive answers in the systemone format (default) or the OpenAI Decisions format with `response_format`.
 
 ***
 
-## Endpoint
+### Endpoint
 
 ```http
 POST https://api.fastrouter.ai/api/v1/systemone
@@ -32,7 +31,7 @@ Authorization: Bearer <FASTROUTER_API_KEY>
 Content-Type: application/json
 ```
 
-## Available models
+### Available models
 
 | Model                 | Description                                                                                |
 | --------------------- | ------------------------------------------------------------------------------------------ |
@@ -42,11 +41,11 @@ The response's `model` field reports the exact version that served the request (
 
 ***
 
-## Quickstart
+### Quickstart
 
-#### cURL
-
-```bash
+{% tabs %}
+{% tab title="cURL" %}
+```shellscript
 curl https://api.fastrouter.ai/api/v1/systemone \
   -H "Authorization: Bearer $FASTROUTER_API_KEY" \
   -H "Content-Type: application/json" \
@@ -61,9 +60,9 @@ curl https://api.fastrouter.ai/api/v1/systemone \
     }
   }'
 ```
+{% endtab %}
 
-#### Python
-
+{% tab title="Python" %}
 ```python
 import os
 import requests
@@ -91,9 +90,9 @@ result = response.json()
 
 print(result["answers"]["is_urgent"]["noul"])  # e.g. 0.95
 ```
+{% endtab %}
 
-#### Node.js / TypeScript
-
+{% tab title="Node.JS" %}
 ```typescript
 const response = await fetch("https://api.fastrouter.ai/api/v1/systemone", {
   method: "POST",
@@ -120,6 +119,8 @@ if (!response.ok) {
 const result = await response.json();
 console.log(result.answers.is_urgent.noul); // e.g. 0.95
 ```
+{% endtab %}
+{% endtabs %}
 
 #### Response
 
@@ -138,7 +139,7 @@ console.log(result.answers.is_urgent.noul); // e.g. 0.95
 
 ***
 
-## Core Concepts
+### Core concepts
 
 | Concept       | What it is                                                                                              |
 | ------------- | ------------------------------------------------------------------------------------------------------- |
@@ -150,19 +151,20 @@ Question keys are identifiers only — they are **not** sent to the model and do
 
 ***
 
-## Request Body
+### Request body
 
-| Field       | Type                      | Required | Description                                                             |
-| ----------- | ------------------------- | -------- | ----------------------------------------------------------------------- |
-| `model`     | string                    | Yes      | The Jev model to use, e.g. `typesafe/jev-latest`.                       |
-| `state`     | string \| object \| array | Yes      | The content to evaluate.                                                |
-| `questions` | map\<string, Question>    | Yes      | Named questions. Each value is a `noul`, `choice`, or `score` question. |
+| Field             | Type                      | Required | Description                                                             |
+| ----------------- | ------------------------- | -------- | ----------------------------------------------------------------------- |
+| `model`           | string                    | Yes      | The Jev model to use, e.g. `typesafe/jev-latest`.                       |
+| `state`           | string \| object \| array | Yes      | The content to evaluate.                                                |
+| `questions`       | map\<string, Question>    | Yes      | Named questions. Each value is a `noul`, `choice`, or `score` question. |
+| `response_format` | string                    | No       | `"systemone"` (default) or `"decisions"`. See Response formats.         |
 
-Every question has a `type` and `instructions`. `instructions` (and criteria values) can be a string, object, or array — see [Structured Instructions](typesafe-jev-structured-evaluation.md#structured-instructions).
+Every question has a `type` and `instructions`. `instructions` (and criteria values) can be a string, object, or array — see Structured instructions.
 
 ***
 
-## Question Types
+### Question types
 
 #### Noul — yes/no
 
@@ -270,7 +272,7 @@ Rates the state along an ordered scale and returns a probability-weighted score.
 
 ***
 
-## Asking Multiple Questions In One Request
+### Asking multiple questions in one request
 
 Batch every question you need about the same state into a single call. Each answer comes back under its own key.
 
@@ -319,7 +321,7 @@ if answers["is_urgent"]["noul"] > 0.8:
 
 ***
 
-## Structured State
+### Structured state
 
 `state` can be structured JSON — useful for conversations, records, or application state.
 
@@ -345,7 +347,7 @@ if answers["is_urgent"]["noul"] > 0.8:
 
 Refer to fields of the state by name in backticks (e.g. `` `messages` ``) to point a question at a specific part of it.
 
-## Structured Instructions
+### Structured instructions
 
 When a question needs extra context or reference data, pass `instructions` as an object: put the question in one field and the data in others, and reference those fields in backticks.
 
@@ -371,7 +373,71 @@ When a question needs extra context or reference data, pass `instructions` as an
 
 ***
 
-## Response Body
+### Response formats
+
+By default, `/systemone` returns the **systemone** format shown above. Set `response_format` to `"decisions"` to receive the same answers in the **OpenAI Decisions** format. This is useful if your code already parses OpenAI Decisions responses.
+
+| `response_format`       | `answers` shape                                      | Choice/score `probabilities`                                         |
+| ----------------------- | ---------------------------------------------------- | -------------------------------------------------------------------- |
+| `"systemone"` (default) | Map keyed by question id                             | Map of option or level index → probability, plus `legend` for scores |
+| `"decisions"`           | Array; each answer carries `name` (your question id) | Array of `{ value, label?, probability }`                            |
+
+`response_format` changes only the **response** shape. The request body still uses the systemone schema (`state`, a `questions` map, `criteria`).
+
+**Request**
+
+```bash
+curl https://api.fastrouter.ai/api/v1/systemone \
+  -H "Authorization: Bearer $FASTROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "typesafe/jev-latest",
+    "state": "Help! My payouts have been failing for 3 days.",
+    "response_format": "decisions",
+    "questions": {
+      "frustration": {
+        "type": "score",
+        "instructions": "How frustrated is the customer?",
+        "criteria": ["Calm", "Frustrated", "Very angry"]
+      }
+    }
+  }'
+```
+
+**Response**
+
+```json
+{
+  "answers": [
+    {
+      "type": "score",
+      "name": "frustration",
+      "score": 1.05,
+      "probabilities": [
+        { "value": 0, "label": "Calm", "probability": 0.0 },
+        { "value": 1, "label": "Frustrated", "probability": 0.95 },
+        { "value": 2, "label": "Very angry", "probability": 0.05 }
+      ],
+      "confidence": 0.92
+    }
+  ],
+  "model": "jev-1.13.0",
+  "usage": { "input_tokens": 304, "output_tokens": 18 }
+}
+```
+
+#### Systemone vs. Decisions field mapping
+
+<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>Concept</td><td><code>/systemone</code> request</td><td><code>/decisions</code> request</td></tr><tr><td>Content to evaluate</td><td><code>state</code></td><td><code>input</code></td></tr><tr><td>Question list</td><td><code>questions</code> map</td><td><code>questions</code> array</td></tr><tr><td>Question identifier</td><td>Map key</td><td><code>name</code></td></tr><tr><td>Yes/no question</td><td><code>noul</code></td><td><code>predicate</code></td></tr><tr><td>Choice options</td><td><code>criteria</code> map (option → description)</td><td><code>choices[]</code> (<code>value</code>, <code>description</code>)</td></tr><tr><td>Score levels</td><td><code>criteria</code> array</td><td><code>levels[]</code> (<code>label</code>, <code>description</code>)</td></tr></tbody></table>
+
+| Answer field (yes/no) | systemone format | Decisions format |
+| --------------------- | ---------------- | ---------------- |
+| Answer type           | `"noul"`         | `"predicate"`    |
+| Probability of yes    | `noul`           | `probability`    |
+
+***
+
+### Response body
 
 | Field                 | Type                 | Description                                           |
 | --------------------- | -------------------- | ----------------------------------------------------- |
@@ -384,14 +450,14 @@ Usage is billed to your FastRouter account and shown in the Activity Log.
 
 ***
 
-## Best Practices
+### Best practices
 
 * **Describe the edges.** Add `criteria` to noul questions when "yes" is ambiguous; it noticeably sharpens results.
 * **Use thresholds, not just the top answer.** `noul`, `probabilities`, and `confidence` let you route low-confidence cases to a human or a stronger model.
 * **Batch questions.** Asking several questions about one state in a single request is cheaper and faster than separate calls.
 * **Keep keys meaningless to the model.** Keys are never seen by the model — all meaning must live in `instructions` and `criteria`.
 
-## Common Use Cases
+### Common use cases
 
 * **Support triage** — urgency (noul), department routing (choice), sentiment (score).
 * **Content moderation** — policy-violation checks with calibrated probabilities.
