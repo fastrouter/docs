@@ -318,7 +318,7 @@ Level indices start at **0**. `score` is the probability-weighted average of the
 
 ### Response formats
 
-By default, `/decisions` returns the **Decisions** format shown above. Set `response_format` to `"systemone"` to receive the same answers in the **TypeSafe systemone** format. This is useful if your code already parses [TypeSafe Jev](https://claude.ai/typesafe-jev) responses.
+By default, `/decisions` returns the **Decisions** format shown above. Set `response_format` to `"systemone"` to receive the same answers in the **TypeSafe systemone** format. This is useful if your code already parses [TypeSafe Jev ](typesafe-systemone-jev.md)responses.
 
 | `response_format`       | `answers` shape                   | Choice/score `probabilities`                                         |
 | ----------------------- | --------------------------------- | -------------------------------------------------------------------- |
