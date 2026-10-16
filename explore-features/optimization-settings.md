@@ -164,8 +164,8 @@ From highest to lowest priority:
 | Priority | Source                         | Applies when                                                                        |
 | -------- | ------------------------------ | ----------------------------------------------------------------------------------- |
 | 1        | **Virtual model alias target** | The request goes through an alias, and the target the alias routed to has a setting |
-| 2        | **Evaluation candidate**       | The request is part of an evaluation run, and the candidate has a setting           |
-| 3        | **API key default**            | The key that made the request has a default setting                                 |
+| 2        | **API key default**            | The key that made the request has a default setting                                 |
+| 3        | **Evaluation candidate**       | The request is part of an evaluation run, and the candidate has a setting           |
 
 If none of these apply, the request runs with no optimization setting.
 
@@ -178,15 +178,9 @@ If none of these apply, the request runs with no optimization setting.
 
 A request with `prod-backend` to `summarizer` uses **`flex-batch` as a whole**: flex on, Effort Low, and **no compression**, because `balanced` is not merged in.
 
-**Alias target beats the evaluation candidate**
-
-An evaluation candidate is the alias `summarizer` with setting `quality-check`. When the alias routes to GPT-6.1 Sol, its target setting `flex-batch` wins. If the alias routes to a target with no setting, `quality-check` applies.
-
 **Key default with a request override**
 
 Key `prod-backend` has default `balanced` (Effort: Medium, compression: Headroom). The request is sent directly to a model and includes:
-
-json
 
 ```json
 {
@@ -197,3 +191,11 @@ json
 ```
 
 The request runs with Effort Medium and Headroom compression from `balanced`, and on the flex tier from the request.
+
+### FAQ
+
+**Can I apply a setting to a whole alias instead of each target?** Not today. Settings are applied per target so mixed-provider aliases can be tuned model by model.
+
+**Does flex tier work with fallbacks?** If a flex request is rejected for capacity, the alias's routing strategy handles it like any other failed request.
+
+**Will compression change my model's answers?** Headroom is lossless. Other engines remove tokens and can affect output; run an evaluation with and without the setting before rolling it out.
