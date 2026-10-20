@@ -202,8 +202,6 @@ curl https://api.fastrouter.ai/api/v1/decisions \
 JSON
 ```
 
-The heredoc (`<<JSON`) lets the shell substitute `$IMAGE_BASE64` into the body. A single-quoted `-d '...'` body would send the literal text `$IMAGE_BASE64`.
-
 **Response**
 
 ```json
