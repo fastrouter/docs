@@ -20,7 +20,7 @@ Use it to classify content, route requests, moderate images, triage issues, and 
 * **One API key:** use your existing FastRouter key, with no separate OpenAI account needed.
 * **Cost in every response:** `usage.cost` reports what each request cost.
 * **Observability:** every request appears in the Activity Log with tokens, latency, and cost.
-* **Switchable response format:** receive answers in the Decisions format (default) or the TypeSafe systemone format with `response_format`.
+* **Switchable response format:** receive answers in the Decisions format or the TypeSafe systemone format with `response_format`. **By default, the response matches the request shape**: a Decisions-shaped request receives a Decisions-shaped response with an ordered `answers` array; whereas a SystemOne-shaped request receives a TypeSafe systemone response shape.  Accepted aliases are `decision` and `openai` for `decisions`, and `system_one` and `typesafe` for `systemone`.
 
 > OpenAI's Decisions API is currently in **public beta**.
 

@@ -19,7 +19,7 @@ Use it for classification, routing, triage, moderation, quality scoring, dedupli
 * **Unified billing and usage** — Jev usage appears alongside all your other model spend.
 * **Observability** — every request is visible in the Activity Log with tokens, latency, and cost.
 * **Structured by design** — answers are typed (`noul`, `choice`, `score`) and include probabilities and confidence, so no output parsing is needed.
-* **Switchable response format** — receive answers in the systemone format (default) or the OpenAI Decisions format with `response_format`.
+* **Switchable response format** — receive answers in the systemone format or the OpenAI Decisions format with `response_format`. **By default, the response matches the request shape**: a Decisions-shaped request receives a Decisions-shaped response with an ordered `answers` array; whereas a SystemOne-shaped request receives a TypeSafe systemone response shape.  Accepted aliases are `decision` and `openai` for `decisions`, and `system_one` and `typesafe` for `systemone`.
 
 ***
 

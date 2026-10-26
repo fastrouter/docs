@@ -72,6 +72,7 @@
 * [Realtime](api-reference/realtime.md)
 * [Sessions](api-reference/sessions.md)
 * [Moderations](api-reference/moderations.md)
+* [Decisions](api-reference/decisions.md)
 * [List Models](api-reference/models.md)
 * [Models x Provider Breakdown](api-reference/models-x-provider-breakdown.md)
 * [List Providers](api-reference/list-providers.md)
