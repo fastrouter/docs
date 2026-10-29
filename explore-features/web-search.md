@@ -220,8 +220,6 @@ When `engine` is `auto` (the default) or `native`, FastRouter uses the provider'
 
 Restrict which domains appear in search results using `allowed_domains` and `excluded_domains`:
 
-json
-
 ```json
 {
   "type": "fastrouter:web_search",
@@ -243,8 +241,6 @@ json
 ### Controlling Total Results
 
 When the model searches multiple times in a single request, use `max_total_results` to cap the cumulative number of results:
-
-json
 
 ```json
 {
