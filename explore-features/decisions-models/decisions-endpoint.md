@@ -1,32 +1,23 @@
 ---
 description: >-
-  Get typed yes/no probabilities, choices, and rubric scores from OpenAI's
-  gpt-6-luna through FastRouter's Decisions endpoint.
+  Send OpenAI Decisions-shaped requests to any decision model (gpt-6-luna,
+  gemini-decision-1, or TypeSafe Jev) through FastRouter's /decisions endpoint.
 icon: gavel
 ---
 
-# OpenAI Decisions: GPT-6 Luna
+# Decisions Endpoint
 
-***
+### Introduction
 
-## Introduction
+The `/decisions` endpoint accepts the **OpenAI Decisions** request schema. You send shared evidence (the **input**: text, images, or both) along with a list of **typed questions**, and get back structured answers: the probability that a condition is true, one option from a fixed set, or a score against a rubric.
 
-FastRouter supports OpenAI's **Decisions API** through the `/decisions` endpoint. You send shared evidence (the **input**: text, images, or both) along with a list of **typed questions**, and get back structured answers: the probability that a condition is true, one option from a fixed set, or a score against a rubric.
-
-Use it to classify content, route requests, moderate images, triage issues, and prioritize work wherever your application needs a decision rather than generated text.
-
-**Why use Decisions through FastRouter**
-
-* **One API key:** use your existing FastRouter key, with no separate OpenAI account needed.
-* **Cost in every response:** `usage.cost` reports what each request cost.
-* **Observability:** every request appears in the Activity Log with tokens, latency, and cost.
-* **Switchable response format:** receive answers in the Decisions format or the TypeSafe systemone format with `response_format`. **By default, the response matches the request shape**: a Decisions-shaped request receives a Decisions-shaped response with an ordered `answers` array; whereas a SystemOne-shaped request receives a TypeSafe systemone response shape.  Accepted aliases are `decision` and `openai` for `decisions`, and `system_one` and `typesafe` for `systemone`.
+The schema is the same for every model. To compare or switch models, change only `model`.
 
 > OpenAI's Decisions API is currently in **public beta**.
 
 ***
 
-### Endpoint
+#### Endpoint
 
 ```http
 POST https://api.fastrouter.ai/api/v1/decisions
@@ -34,26 +25,34 @@ Authorization: Bearer <FASTROUTER_API_KEY>
 Content-Type: application/json
 ```
 
-### Available models
+#### Supported models
 
-| Model        | Description                                                          |
-| ------------ | -------------------------------------------------------------------- |
-| `gpt-6-luna` | OpenAI's decision model; currently the only model for this endpoint. |
+| Model                 | Provider | Input        |
+| --------------------- | -------- | ------------ |
+| `gpt-6-luna`          | OpenAI   | Text, images |
+| `gemini-decision-1`   | Google   | Text         |
+| `typesafe/jev-latest` | TypeSafe | Text, images |
+| `typesafe/jev-1.14.0` | TypeSafe | Text, images |
+| `typesafe/jev-1.13.0` | TypeSafe | Text, images |
+
+See [Decision Models](decision-models.md) for model notes and pricing.
 
 ***
 
-### How a request works
+#### Request body
 
-| Field             | Type            | Required | Description                                                                                                                                     |
-| ----------------- | --------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`           | string          | Yes      | `gpt-6-luna`.                                                                                                                                   |
-| `input`           | string \| array | Yes      | Shared evidence for all questions: a text string, or user messages containing text and images.                                                  |
-| `questions`       | array           | Yes      | The questions to evaluate. Each has a `type`, a `name`, `instructions`, and type-specific options.                                              |
-| `response_format` | string          | No       | `"decisions"` (default) or `"systemone"`. See [Response formats](https://claude.ai/chat/1394a175-27d7-41bf-9c69-db45cb8377c5#response-formats). |
+| Field             | Type            | Required | Description                                                                                               |
+| ----------------- | --------------- | -------- | --------------------------------------------------------------------------------------------------------- |
+| `model`           | string          | Yes      | Any model from [Supported models](decisions-endpoint.md#supported-models).                                |
+| `input`           | string \| array | Yes      | Shared evidence for all questions: a text string, or user messages containing text and images.            |
+| `questions`       | array           | Yes      | The questions to evaluate. Each has a `type`, a `name`, `instructions`, and type-specific options.        |
+| `response_format` | string          | No       | `"decisions"` (default) or `"systemone"`. See [Response formats](decisions-endpoint.md#response-formats). |
+
+This endpoint also accepts the Gemini request format, with any model.
 
 Give every question a **unique `name`**. The API echoes it on each answer so you can match answers to questions. It is required if you use `response_format: "systemone"`, where answers are keyed by name.
 
-#### Question types
+**Question types**
 
 | Type        | Use it to                                                            | Main result                                                     |
 | ----------- | -------------------------------------------------------------------- | --------------------------------------------------------------- |
@@ -65,9 +64,9 @@ Use `choice` for categories with no order and `score` for ordered levels. Both r
 
 ***
 
-### Quickstart
+#### Quickstart
 
-Route a customer complaint to a department.
+Route a customer complaint to a department. The same request works with any supported model.
 
 {% tabs %}
 {% tab title="cURL" %}
@@ -94,7 +93,7 @@ curl https://api.fastrouter.ai/api/v1/decisions \
 {% endtab %}
 
 {% tab title="Python (requests)" %}
-```python
+```py
 import os
 import requests
 
@@ -102,7 +101,7 @@ resp = requests.post(
     "https://api.fastrouter.ai/api/v1/decisions",
     headers={"Authorization": f"Bearer {os.environ['FASTROUTER_API_KEY']}"},
     json={
-        "model": "gpt-6-luna",
+        "model": "gpt-6-luna",  # or "gemini-decision-1", "typesafe/jev-latest"
         "input": "I was charged twice for my order.",
         "questions": [
             {
@@ -126,7 +125,7 @@ print(resp.json()["answers"][0]["choice"])  # "billing"
 {% endtab %}
 {% endtabs %}
 
-#### Response
+**Response**
 
 ```json
 {
@@ -157,11 +156,106 @@ print(resp.json()["answers"][0]["choice"])  # "billing"
 }
 ```
 
+**Using other models**
+
+Change `model` and keep the rest of the request. For example, with Gemini:
+
+{% tabs %}
+{% tab title="gemini-decision-1" %}
+```bash
+curl https://api.fastrouter.ai/api/v1/decisions \
+  -H "Authorization: Bearer $FASTROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "The blue mug I ordered on Monday arrived cracked on Wednesday.",
+    "questions": [{
+      "type": "predicate",
+      "name": "is_damaged",
+      "instructions": "Did the item arrive damaged?"
+    }]
+  }'
+```
+{% endtab %}
+
+{% tab title="typesafe/jev-latest" %}
+```bash
+curl https://api.fastrouter.ai/api/v1/decisions \
+  -H "Authorization: Bearer $FASTROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "typesafe/jev-latest",
+    "input": "The blue mug I ordered on Monday arrived cracked on Wednesday.",
+    "questions": [{
+      "type": "predicate",
+      "name": "is_damaged",
+      "instructions": "Did the item arrive damaged?"
+    }]
+  }'
+```
+{% endtab %}
+{% endtabs %}
+
+The response has the same Decisions shape whichever model serves it. The `model` field reports the model that served the request; for `typesafe/jev-latest` it reports the exact Jev version.
+
+**Gemini request format**
+
+This endpoint also accepts Google's Gemini Decisions request format, with any decision model: `input` for the content and a `questions` **map** keyed by question name, using `noul`, `choice`, and `score` questions with `criteria`. Send existing Gemini requests unchanged, and change `model` to run them on `gpt-6-luna` or Jev.
+
+```bash
+curl https://api.fastrouter.ai/api/v1/decisions \
+  -H "Authorization: Bearer $FASTROUTER_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "The blue mug I ordered on Monday arrived cracked on Wednesday.",
+    "questions": {
+      "is_damaged": {
+        "type": "noul",
+        "instructions": "Did the item arrive damaged?"
+      },
+      "queue": {
+        "type": "choice",
+        "instructions": "Which support queue should handle this message?",
+        "criteria": {
+          "billing": "Payment, invoice, or refund questions.",
+          "replacements": "Damaged, missing, or wrong items.",
+          "general": "Product questions and account updates."
+        }
+      }
+    }
+  }'
+```
+
+A Gemini-format request returns a **Gemini-format response** by default, even on this endpoint:
+
+```json
+{
+  "answers": {
+    "is_damaged": { "type": "noul", "noul": 0.97, "confidence": 0.97 },
+    "queue": {
+      "type": "choice",
+      "choice": "replacements",
+      "probabilities": { "billing": 0.03, "replacements": 0.95, "general": 0.02 },
+      "confidence": 0.95
+    }
+  },
+  "usage": {
+    "total_input_tokens": 128,
+    "input_tokens_by_modality": [{ "modality": "TEXT", "tokens": 128 }],
+    "total_output_tokens": 0,
+    "total_tokens": 128
+  }
+}
+```
+
+To get a Decisions-format response instead, add `"response_format": "decisions"`.&#x20;
+
 ***
 
-### Question types in detail
+#### Question types in detail
 
-#### Predicate: check a condition
+**Predicate: check a condition**
 
 Returns the probability that a condition is true.
 
@@ -173,9 +267,7 @@ Returns the probability that a condition is true.
 
 **Example: check an image for visible damage**
 
-Images must be **inline base64 data URLs**. Hosted HTTP/HTTPS image URLs and `file_id` inputs are not supported. Combine `input_text` and `input_image` parts in a user message to evaluate an image together with context.
-
-**cURL**
+Images go in `input` as `input_image` parts. Combine them with `input_text` parts in a user message to evaluate an image together with context. Image input works with `gpt-6-luna` and the Jev models; see [Images](images.md) for formats, limits, and model support.
 
 ```bash
 IMAGE_BASE64="$(base64 < product.png | tr -d '\r\n')"
@@ -226,7 +318,7 @@ JSON
 }
 ```
 
-#### Choice: pick one option
+**Choice: pick one option**
 
 | Field                   | Type       | Required    | Description                         |
 | ----------------------- | ---------- | ----------- | ----------------------------------- |
@@ -247,7 +339,7 @@ JSON
 
 Include a fallback such as `"other"` when your options might not cover every input, and send those results to a general review queue.
 
-#### Score: rate against a rubric
+**Score: rate against a rubric**
 
 | Field                  | Type      | Required    | Description                       |
 | ---------------------- | --------- | ----------- | --------------------------------- |
@@ -312,11 +404,21 @@ curl https://api.fastrouter.ai/api/v1/decisions \
 
 Level indices start at **0**. `score` is the probability-weighted average of the indices, so it can fall between levels. Here, 0.02 × 0 + 0.97 × 1 + 0.01 × 2 = 0.99.
 
+**Model-specific limits**
+
+| Limit                         | `gpt-6-luna` | `gemini-decision-1` | Jev models |
+| ----------------------------- | ------------ | ------------------- | ---------- |
+| Questions per request         | —            | Up to 1,000         | —          |
+| Options per `choice` question | —            | —                   | Up to 255  |
+| Levels per `score` question   | —            | —                   | 2 to 10    |
+
+A dash means the provider does not publish a specific limit.
+
 ***
 
-### Response formats
+#### Response formats
 
-By default, `/decisions` returns the **Decisions** format shown above. Set `response_format` to `"systemone"` to receive the same answers in the **TypeSafe systemone** format. This is useful if your code already parses [TypeSafe Jev ](typesafe-systemone-jev.md)responses.
+By default, a Decisions-format request returns the **Decisions** format shown above, and a Gemini-format request returns the Gemini format. Set `response_format` to `"systemone"` to receive the same answers in the **TypeSafe SystemOne** format. This is useful if your code already parses [SystemOne](https://claude.ai/chat/systemone-endpoint.md) responses. Accepted aliases are `decision` and `openai` for `decisions`, and `system_one` and `typesafe` for `systemone`.
 
 | `response_format`       | `answers` shape                   | Choice/score `probabilities`                                         |
 | ----------------------- | --------------------------------- | -------------------------------------------------------------------- |
@@ -376,21 +478,17 @@ curl https://api.fastrouter.ai/api/v1/decisions \
 }
 ```
 
-`response_format` changes only the **response** shape. The request body must still use the Decisions schema (`input`, a `questions` array, `choices`, `levels`).
-
-#### Decisions vs. systemone field mapping
-
-<table data-header-hidden data-search="false"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>Concept</td><td><code>/decisions</code> request</td><td><code>/systemone</code> request</td></tr><tr><td>Content to evaluate</td><td><code>input</code></td><td><code>state</code></td></tr><tr><td>Question list</td><td><code>questions</code> array</td><td><code>questions</code> map</td></tr><tr><td>Question identifier</td><td><code>name</code></td><td>Map key</td></tr><tr><td>Yes/no question</td><td><code>predicate</code></td><td><code>noul</code></td></tr><tr><td>Choice options</td><td><code>choices[]</code> (<code>value</code>, <code>description</code>)</td><td><code>criteria</code> map (option → description)</td></tr><tr><td>Score levels</td><td><code>levels[]</code> (<code>label</code>, <code>description</code>)</td><td><code>criteria</code> array</td></tr></tbody></table>
+`response_format` changes only the **response** shape. The request body must still use the Decisions schema (`input`, a `questions` array, `choices`, `levels`). See the field mapping to convert between the two schemas.
 
 ***
 
-### Response body
+#### Response body
 
-<table data-search="false"><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>answers</code></td><td>array (or map with <code>systemone</code>)</td><td>One answer per question.</td></tr><tr><td><code>id</code></td><td>string</td><td>FastRouter request ID, also shown in the Activity Log.</td></tr><tr><td><code>model</code></td><td>string</td><td>Model that served the request.</td></tr><tr><td><code>usage.input_tokens</code></td><td>integer</td><td>Input tokens billed.</td></tr><tr><td><code>usage.output_tokens</code></td><td>integer</td><td>Always <code>0</code>; Decisions bills input tokens only.</td></tr><tr><td><code>usage.total_tokens</code></td><td>integer</td><td>Total tokens.</td></tr><tr><td><code>usage.cost</code></td><td>number</td><td>Cost of the request in USD.</td></tr><tr><td><code>usage.chat_id</code></td><td>string</td><td>Same as <code>id</code>.</td></tr><tr><td><code>usage.provider</code></td><td>string</td><td>Upstream provider (<code>openai</code>).</td></tr></tbody></table>
+<table data-search="false"><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>answers</code></td><td>array (or map with <code>systemone</code>)</td><td>One answer per question.</td></tr><tr><td><code>id</code></td><td>string</td><td>FastRouter request ID, also shown in the Activity Log.</td></tr><tr><td><code>model</code></td><td>string</td><td>Model that served the request. For <code>typesafe/jev-latest</code>, the exact Jev version.</td></tr><tr><td><code>usage.input_tokens</code></td><td>integer</td><td>Input tokens billed, including image tokens.</td></tr><tr><td><code>usage.output_tokens</code></td><td>integer</td><td>Output tokens. Always <code>0</code> for <code>gpt-6-luna</code> and <code>gemini-decision-1</code>.</td></tr><tr><td><code>usage.total_tokens</code></td><td>integer</td><td>Total tokens.</td></tr><tr><td><code>usage.cost</code></td><td>number</td><td>Cost of the request in USD.</td></tr><tr><td><code>usage.chat_id</code></td><td>string</td><td>Same as <code>id</code>.</td></tr><tr><td><code>usage.provider</code></td><td>string</td><td>Upstream provider, such as <code>openai</code>, <code>google</code>, or <code>typesafe</code>.</td></tr></tbody></table>
 
-#### Refusals
+**Refusals**
 
-If the model declines to answer a question, that question's answer has `"type": "refusal"` and carries the question's `name`. Always check an answer's `type` before reading `probability`, `choice`, or `score`.
+If a model declines to answer a question, that question's answer has `"type": "refusal"` and carries the question's `name`. Always check an answer's `type` before reading `probability`, `choice`, or `score`.
 
 ```json
 { "type": "refusal", "name": "visible_damage" }
@@ -398,19 +496,20 @@ If the model declines to answer a question, that question's answer has `"type": 
 
 ***
 
-### Pricing
+#### Pricing
 
-`gpt-6-luna` on `/decisions` is billed on **input tokens only** at **$0.10 per 1M tokens**. There are no output, cache-read, or cache-write charges. Each response reports the exact charge in `usage.cost`.
+See [Decision Models → Pricing](decision-models.md#pricing). `gpt-6-luna` and `gemini-decision-1` are billed on **input tokens only** at **$0.10 per 1M tokens**. Each response reports the exact charge in `usage.cost`.
 
 ***
 
-### Interpreting answers
+#### Interpreting answers
 
 * **Predicates** return the probability that the condition is true.
 * **Choice and score** return a full probability distribution plus `confidence`.
 * **Set thresholds on labeled examples** from your own application, weighing the cost of false positives against false negatives. Route low-confidence results to a human or a stronger model.
+* **Re-check thresholds when you change models.** Probabilities from different models are not interchangeable; a threshold tuned on `gpt-6-luna` may not suit `gemini-decision-1` or Jev.
 
-### Best practices
+#### Best practices
 
 * **Write questions around observable criteria.** "Is there a visible crack?" is better than "Is this product bad?"
 * **One concern per question.** Split compound checks into separate questions in the same request.
@@ -418,7 +517,7 @@ If the model declines to answer a question, that question's answer has `"type": 
 * **Batch independent questions** about the same input in one request; it's cheaper and faster than separate calls.
 * **Use Structured Outputs instead** when you need a generated object (extracted fields, written explanations) rather than a probability, choice, or score.
 
-### Common use cases
+#### Common use cases
 
 * **Support triage:** urgency (predicate), department (choice), severity (score).
 * **Image moderation and QA:** damage, policy violations, or product category from photos.
